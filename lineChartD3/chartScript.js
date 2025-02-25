@@ -23,9 +23,6 @@ d3.csv("cars.csv").then(function (data) {
     // Convert string values to numbers
     data.forEach(function (d) {
         d["economy (mpg)"] = +d["economy (mpg)"];
-        d["weight (lb)"] = +d["weight (lb)"]
-        d["cylinders"] = +d["cylinders"]
-        d["power (hp)"] = +d["power (hp)"]
         d.year = +d.year
         d.name = d.name;
     });
@@ -33,34 +30,26 @@ d3.csv("cars.csv").then(function (data) {
     data.sort((a,b) => a.name>b.name);
     console.log(data);
     // https://observablehq.com/@d3/d3-group
-    const years = d3.rollup(data, v => d3.mean(v, d => d["power (hp)"]), d => d.year);
+    const years = d3.rollup(data, v => d3.mean(v, d => d["economy (mpg)"]), d => d.year);
     console.log(years)
     // Define X and Y scales
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d["weight (lb)"])])
+        .domain([d3.min(data, d => d["economy (mpg)"]), d3.max(data, d => d["economy (mpg)"])])
         .nice()
         .range([ 0, -height])
         //.padding(0.1);
-    console.log(d3.max(data, d => d["economy (mpg)"]))
-    const x = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d["economy (mpg)"])])
+
+    const x = d3.scaleTime()
+        .domain([d3.timeParse("%y")(d3.min(data, d => d["year"])),d3.timeParse("%y")(d3.max(data, d => d["year"]))])
         .nice()
         .range([ 0, width]);
     
-    const size = d3.scaleLinear()
-        .domain([d3.min(data, d => d["cylinders"]), d3.max(data, d => d["cylinders"])])
-        .nice()
-        .range([ minSize, maxSize]);
 
-    const color = d3.scaleLinear()
-        .domain([d3.min(data, d => d["power (hp)"]), d3.max(data, d => d["power (hp)"])])
-        .nice()
-        .range([ 50, 255]);
     // Add X and Y axes
     svg.append("g")
         .attr("class", "axis axis-x")
         .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisBottom(x).ticks(20));
+        .call(d3.axisBottom(x).ticks(10));
 
     svg.append("g")
         .attr("class", "axis axis-y")
@@ -70,17 +59,19 @@ d3.csv("cars.csv").then(function (data) {
     // Add bars
     // adding multiple elements on same level with groups based on https://stackoverflow.com/questions/65434376/append-two-elements-in-svg-at-the-same-level
     bars =  svg.selectAll(".bar")
-        .data(data)
+        .data(years)
         .enter()
         .append("g")
         
+    console.log(bars.data())
 
-       
+    console.log
     bars.append("circle")
-        .attr("cx", d => x(d["economy (mpg)"]))
-        .attr("cy", d => y(d["weight (lb)"]))
-        .attr("r", d => size(d["cylinders"]))
-        .attr("fill", d =>  `rgb(${color(d["power (hp)"])}, ${color(d["power (hp)"])}, ${color(d["power (hp)"])})`)
+        .attr("test",d => `test ${ years[d[0]]}`)
+        .attr("cx", d => x(d3.timeParse("%y")(d[0])))
+        .attr("cy", d => y(d[1]))
+        .attr("r", 5)
+
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
 
     
@@ -94,18 +85,18 @@ d3.csv("cars.csv").then(function (data) {
 
 
     svg.append("text")
-        .text("weight")
+        .text("avg mpg")
         .attr("x", -100)
         .attr("y", height/2)
         
     svg.append("text")
-        .text("mpg")
+        .text("year")
         .attr("x", width/2)
         .attr("y", height+margin.bottom/2)
 
     svg.append("text")
     
-        .text("bubble plot of the weights of cars vs the mpg, with size representing the number of cylinders and  darker colors representing higher power")
+        .text("line plot of the avg mpg per year")
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
