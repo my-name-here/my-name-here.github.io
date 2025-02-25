@@ -26,11 +26,15 @@ d3.csv("cars.csv").then(function (data) {
         d["weight (lb)"] = +d["weight (lb)"]
         d["cylinders"] = +d["cylinders"]
         d["power (hp)"] = +d["power (hp)"]
+        d.year = +d.year
         d.name = d.name;
     });
+
     data.sort((a,b) => a.name>b.name);
     console.log(data);
-
+    // https://observablehq.com/@d3/d3-group
+    const years = d3.rollup(data, v => d3.mean(v, d => d["power (hp)"]), d => d.year);
+    console.log(years)
     // Define X and Y scales
     const y = d3.scaleLinear()
         .domain([0, d3.max(data, d => d["weight (lb)"])])
