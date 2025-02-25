@@ -39,7 +39,7 @@ d3.csv("cars.csv").then(function (data) {
         //.padding(0.1);
     console.log(d3.max(data, d => d["economy (mpg)"]))
     const x = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d["economy (mpg)"])])
+        .domain([d3.min(data, d => d["economy (mpg)"])-2, d3.max(data, d => d["economy (mpg)"])])
         .nice()
         .range([ 0, width]);
     
