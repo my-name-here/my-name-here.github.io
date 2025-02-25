@@ -33,7 +33,7 @@ d3.csv("cars.csv").then(function (data) {
 
     // Define X and Y scales
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d["weight (lb)"])])
+        .domain([d3.min(data, d => d["weight (lb)"])-200, d3.max(data, d => d["weight (lb)"])])
         .nice()
         .range([ 0, -height])
         //.padding(0.1);
