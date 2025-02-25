@@ -9,6 +9,7 @@ const height = svgHeight - margin.top - margin.bottom;
 
 const minSize = 1
 const maxSize = 6
+let years
 const svg = d3.select("#chart-container")
     .append("svg")
     .attr("width", svgWidth)
@@ -58,19 +59,28 @@ d3.csv("cars.csv").then(function (data) {
 
     // Add bars
     // adding multiple elements on same level with groups based on https://stackoverflow.com/questions/65434376/append-two-elements-in-svg-at-the-same-level
+    let maxYear = d3.max(data, d => d["year"])
     bars =  svg.selectAll(".bar")
         .data(years)
         .enter()
         .append("g")
         
-    console.log(bars.data())
+    bars.append("line")
+        .attr("test", d => `${years.get(Math.min(d[0], maxYear))}`)
+        .attr("x1", d => x(d3.timeParse("%y")(d[0])))
+        .attr("y1", d => y(years.get(d[0])))
+        .attr("x2", d => x(d3.timeParse("%y")(Math.min(d[0]+1, maxYear))))
+        .attr("y2", d => y(years.get(Math.min(d[0]+1, maxYear))))
+        .attr("stroke-width", 1)
+        .attr("stroke", "black")
 
-    console.log
+        .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
     bars.append("circle")
-        .attr("test",d => `test ${ years[d[0]]}`)
+        .attr("test", d => `${years.get(Math.min(d[0], maxYear))}`)
         .attr("cx", d => x(d3.timeParse("%y")(d[0])))
-        .attr("cy", d => y(d[1]))
-        .attr("r", 5)
+        .attr("cy", d => y(years.get(d[0])))
+       
+        .attr("r", 2)
 
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
 
