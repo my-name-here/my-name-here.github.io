@@ -30,7 +30,7 @@ d3.csv("cars.csv").then(function (data) {
 
     data.sort((a,b) => a.name>b.name);
     console.log(data);
-    // https://observablehq.com/@d3/d3-group
+    // rollup code based on https://observablehq.com/@d3/d3-group
     const years = d3.rollup(data, v => d3.mean(v, d => d["economy (mpg)"]), d => d.year);
     console.log(years)
     // Define X and Y scales
