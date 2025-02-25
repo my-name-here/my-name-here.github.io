@@ -35,7 +35,7 @@ d3.csv("cars.csv").then(function (data) {
     console.log(years)
     // Define X and Y scales
     const y = d3.scaleLinear()
-        .domain([d3.min(data, d => d["economy (mpg)"]), d3.max(data, d => d["economy (mpg)"])])
+        .domain([d3.min(years, d => d[1])-2, d3.max(years, d => d[1])+2])
         .nice()
         .range([ 0, -height])
         //.padding(0.1);
