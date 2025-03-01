@@ -51,7 +51,7 @@ d3.csv(
 
     var colorScale = d3.scaleSequential()
         .interpolator(d3.interpolateReds)
-        .domain([d3.min(distances),d3.max(distances)]);
+        .domain([d3.min(data, (d) => d['cylinders']),d3.max(data, (d) => d['cylinders'])]);
 
 
 
