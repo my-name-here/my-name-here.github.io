@@ -49,6 +49,10 @@ d3.csv(
         .nice()
         .range([0, width]);
 
+    var colorScale = d3.scaleSequential()
+        .interpolator(d3.interpolateReds)
+        .domain([d3.min(distances),d3.max(distances)]);
+
 
 
     // Add X and Y axes
