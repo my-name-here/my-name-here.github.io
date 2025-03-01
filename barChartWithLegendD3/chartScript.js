@@ -82,6 +82,7 @@ d3.csv(
         .attr('height', y.bandwidth())
         .attr('x', (d) => 0)
         .attr('width', (d) => x(d['economy (mpg)']));
+        .attr('fill', (d) => colorScale(d['cylinder']))
 
     bars
         .append('text')
