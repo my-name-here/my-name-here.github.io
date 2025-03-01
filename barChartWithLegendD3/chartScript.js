@@ -31,7 +31,7 @@ d3.csv(
     data.forEach(function (d) {
         d['economy (mpg)'] = +d['economy (mpg)'];
         d.name = d.name;
-        d['cylinders'] = +d["cylinders"];
+        d["power (hp)"] = +d["power (hp)"];
     });
     data.sort((a, b) => a.name > b.name);
     console.log(data);
@@ -51,7 +51,8 @@ d3.csv(
 
     var colorScale = d3.scaleSequential()
         .interpolator(d3.interpolateReds)
-        .domain([d3.min(data, (d) => d['cylinders']),d3.max(data, (d) => d['cylinders'])]);
+        .nice()
+        .domain([d3.min(data, (d) => d['power (hp)']),d3.max(data, (d) => d['power (hp)'])]);
 
 
 
@@ -82,7 +83,7 @@ d3.csv(
         .attr('height', y.bandwidth())
         .attr('x', (d) => 0)
         .attr('width', (d) => x(d['economy (mpg)']))
-        .attr('fill', (d) => colorScale(d['cylinder']));
+        .attr('fill', d => colorScale(d['power (hp)']));
 
     bars
         .append('text')
