@@ -31,6 +31,7 @@ d3.csv(
   data.forEach(function (d) {
     d['economy (mpg)'] = +d['economy (mpg)'];
     d.name = d.name;
+    d['cylinders'] = +d["cylinders"];
   });
   data.sort((a, b) => a.name > b.name);
   console.log(data);
