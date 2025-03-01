@@ -4,7 +4,7 @@ const svgWidth = 1000;
 const svgHeight = 4000;
 const margin = {
     top: 50,
-    right: 20,
+    right: 100,
     bottom: 30,
     left: 250,
 };
