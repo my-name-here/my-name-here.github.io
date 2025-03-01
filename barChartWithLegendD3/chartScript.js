@@ -91,6 +91,7 @@ d3.csv(
         .text((d) => `mpg: ${d['economy (mpg)']}`)
         .attr('y', (d) => y(d.name) + 15)
         .attr('x', (d) => 25);
+        
 
     svg
         .append('text')
@@ -112,7 +113,7 @@ d3.csv(
         .attr('x', 0)
         .attr('y', -margin.top / 2);
     var legend = d3.legendColor()
-		.title("Color Legend")
+		.title("Color Legend: Power (Horsepower)")
 		.titleWidth(100)
         .cells(7) // change the number of cells during demo 
         .scale(colorScale);
