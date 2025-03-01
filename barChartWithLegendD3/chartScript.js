@@ -107,7 +107,7 @@ d3.csv(
     svg
         .append('text')
 
-        .text('barchart of MPG of cars sorted by name')
+        .text('barchart of MPG of cars with color representing power, sorted by name')
         .attr('class', 'title')
         .attr('x', 0)
         .attr('y', -margin.top / 2);
