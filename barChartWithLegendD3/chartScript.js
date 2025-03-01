@@ -111,4 +111,15 @@ d3.csv(
         .attr('class', 'title')
         .attr('x', 0)
         .attr('y', -margin.top / 2);
+    var legend = d3.legendColor()
+		.title("Color Legend")
+		.titleWidth(100)
+        .cells(7) // change the number of cells during demo 
+        .scale(colorScale);
+		
+
+    svg.append("g")
+        .attr("transform", `translate(${width},0)`)
+        .call(legend);
+
 });
