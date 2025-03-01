@@ -115,7 +115,7 @@ d3.csv(
     var legend = d3.legendColor()
 		.title("Color Legend: Power (Horsepower)")
 		.titleWidth(100)
-        .cells(7) // change the number of cells during demo 
+        .cells(10) // change the number of cells during demo 
         .scale(colorScale);
 		
 
