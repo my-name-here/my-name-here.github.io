@@ -35,7 +35,10 @@ d3.csv(
     });
     data.sort((a, b) => a.name > b.name);
     console.log(data);
-
+    // diverging bar chart will be centered around average of data.
+    // to do this, we first need to know where the average is
+    const averageVal = d3.mean(data, (d) => d['economy (mpg)']);
+    console.log("mean value is: ", averageVal);
     // Define X and Y scales
     const y = d3
         .scaleBand()
