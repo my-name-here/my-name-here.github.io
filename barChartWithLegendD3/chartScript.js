@@ -31,7 +31,7 @@ d3.csv(
     data.forEach(function (d) {
         d['economy (mpg)'] = +d['economy (mpg)'];
         d.name = d.name;
-        d["power (hp)"] = +d["power (hp)"];
+
     });
     data.sort((a, b) => a.name > b.name);
     console.log(data);
@@ -50,9 +50,9 @@ d3.csv(
         .range([0, width]);
 
     var colorScale = d3.scaleSequential()
-        .interpolator(d3.interpolateReds)
+        .interpolator(d3.interpolateBlues)
         .nice()
-        .domain([d3.min(data, (d) => d['power (hp)']),d3.max(data, (d) => d['power (hp)'])]);
+        .domain([d3.min(data, (d) => d['economy (mpg)']),d3.max(data, (d) => d['economy (mpg)'])]);
 
 
 
@@ -83,7 +83,7 @@ d3.csv(
         .attr('height', y.bandwidth())
         .attr('x', (d) => 0)
         .attr('width', (d) => x(d['economy (mpg)']))
-        .attr('fill', d => colorScale(d['power (hp)']));
+        .attr('fill', d => colorScale(d['economy (mpg)']));
 
     bars
         .append('text')
@@ -108,12 +108,12 @@ d3.csv(
     svg
         .append('text')
 
-        .text('barchart of MPG of cars with color representing power, sorted by name')
+        .text('barchart of MPG of cars, sorted by name')
         .attr('class', 'title')
         .attr('x', 0)
         .attr('y', -margin.top / 2);
     var legend = d3.legendColor()
-		.title("Color Legend: Power (Horsepower)")
+		.title("Color Legend: economy (mpg)")
 		.titleWidth(100)
         .cells(10) // change the number of cells during demo 
         .scale(colorScale);
