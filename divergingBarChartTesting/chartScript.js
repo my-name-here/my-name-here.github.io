@@ -50,7 +50,7 @@ d3.csv(
         .range([0, width]);
 
     var colorScale = d3.scaleSequential()
-        .interpolator(d3.interpolateReds)
+        .interpolator(d3.interpolateRdBu)
         .nice()
         .domain([d3.min(data, (d) => d['power (hp)']),d3.max(data, (d) => d['power (hp)'])]);
 
