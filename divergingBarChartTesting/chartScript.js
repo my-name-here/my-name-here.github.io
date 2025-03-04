@@ -143,7 +143,7 @@ d3.csv(
         .attr('x', 0)
         .attr('y', -margin.top / 2);
     var legend = d3.legendColor()
-		.title("Color Legend: economy (mpg)")
+		.title("Color Legend: distance from avg mpg")
 		.titleWidth(100)
         .cells(10) // change the number of cells during demo 
         .scale(colorScale);
