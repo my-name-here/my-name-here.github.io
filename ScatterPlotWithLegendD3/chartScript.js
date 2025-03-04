@@ -45,10 +45,11 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
     
     // ordinal scale, see https://d3js.org/d3-scale/ordinal
     var colorScale = d3.scaleOrdinal()
-        .domain( [3,4,5,6,8])
+        .domain( [4,6,8])
 
         // colors from colorbrewer
-        .range(["#1b9e77", "#d95f02", "#7570b3","#e7298a","#66a61e"]);
+        .range(["#1b9e77", "#d95f02", "#7570b3"])
+        .unknown("#e7298a");
         
 
 
