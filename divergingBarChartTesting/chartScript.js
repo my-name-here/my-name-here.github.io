@@ -109,7 +109,8 @@ d3.csv(
         // we do x(0) - x(dist), since this calculates the length between the point where the average is
         //  and the point where the data is
         .attr('width', (d) => Math.abs( x(0)-(x(d['economy (mpg)']-averageVal))))
-        .attr('fill', d => colorScale(d['economy (mpg)']));
+        // color calculated based on distance from average
+        .attr('fill', d => colorScale(d['economy (mpg)']-averageVal));
 
     bars
         .append('text')
