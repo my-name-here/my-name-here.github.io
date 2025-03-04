@@ -66,7 +66,7 @@ d3.csv(
     var colorScale = d3.scaleSequential()
         .interpolator(d3.interpolateRdBu)
         .nice()
-        .domain([d3.min(data, (d) => d['economy (mpg)']),d3.max(data, (d) => d['economy (mpg)'])]);
+        .domain([-maxDist, maxDist]);
 
 
 
