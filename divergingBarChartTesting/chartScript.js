@@ -39,13 +39,22 @@ d3.csv(
     // to do this, we first need to know where the average is
     const averageVal = d3.mean(data, (d) => d['economy (mpg)']);
     console.log("mean value is: ", averageVal);
+    // now, we want to figure out the range of distances from the average. the absolute distance in each directiion will be at the min and max
+    // find the min and max values first
+    const minValue = d3.min(data, (d) => d['economy (mpg)']);
+    const maxValue = d3.max(data, (d) => d['economy (mpg)']);
+    // now calculate the maximimum possible absolute distance from average
+    // first we calculate the absolute distance from average for the min and max
+    // since we know that the maximum possible distance must happen at one of those 
+    const distLower = averageVal - minValue; // since average is bigger than min, this will be positive
+    const distUpper = maxValue - averageVal; // since max is bigger than average, this is positive
     // Define X and Y scales
     const y = d3
         .scaleBand()
         .domain(data.map((d) => d.name))
         .range([0, height])
         .padding(0.1);
-    console.log(d3.max(data, (d) => d['economy (mpg)']));
+
     const x = d3
         .scaleLinear()
         .domain([0, d3.max(data, (d) => d['economy (mpg)'])])
