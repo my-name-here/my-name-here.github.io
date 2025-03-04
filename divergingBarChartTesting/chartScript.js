@@ -145,7 +145,7 @@ d3.csv(
     var legend = d3.legendColor()
 		.title("Color Legend: distance from avg mpg")
 		.titleWidth(100)
-        .cells(10) // change the number of cells during demo 
+        .cells(11) // change the number of cells during demo 
         .scale(colorScale);
 		
 
