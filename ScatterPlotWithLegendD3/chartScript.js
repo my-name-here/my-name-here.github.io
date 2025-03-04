@@ -73,7 +73,7 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
     bars.append("circle")
         .attr("cx", d => x(d["economy (mpg)"]))
         .attr("cy", d => y(d["weight (lb)"]))
-        .attr("r", 10)
+        .attr("r", 5)
         .attr("fill", d =>  colorScale(d.cylinders))
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
 
