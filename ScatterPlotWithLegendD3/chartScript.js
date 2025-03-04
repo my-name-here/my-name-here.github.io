@@ -99,7 +99,7 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
 
     svg.append("text")
     
-        .text("bubble plot of the weights of cars vs the mpg, with size representing the number of cylinders and  darker colors representing higher power")
+        .text("scatter plot of the weights of cars vs the mpg, colored by the number of cylinders")
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
