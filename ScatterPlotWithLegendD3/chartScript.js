@@ -3,7 +3,7 @@
 // Set up the SVG container
 const svgWidth = 1000;
 const svgHeight = 1000;
-const margin = { top: 50, right: 20, bottom: 100, left: 250 };
+const margin = { top: 50, right: 100, bottom: 100, left: 250 };
 const width = svgWidth - margin.left - margin.right;
 const height = svgHeight - margin.top - margin.bottom;
 
@@ -103,4 +103,14 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
+        var legend = d3.legendColor()
+		.title("Color Legend: distance from avg mpg")
+		.titleWidth(100)
+        .cells(11) // change the number of cells during demo 
+        .scale(colorScale);
+		
+
+    svg.append("g")
+        .attr("transform", `translate(${width},0)`)
+        .call(legend);
 });
