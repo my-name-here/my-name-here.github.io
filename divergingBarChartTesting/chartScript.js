@@ -56,10 +56,10 @@ d3.csv(
         .domain(data.map((d) => d.name))
         .range([0, height])
         .padding(0.1);
-
+    // domain is based on distance from average, making the axis nicer
     const x = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d['economy (mpg)'])])
+        .domain([-maxDist, maxDist])
         .nice()
         .range([0, width]);
 
