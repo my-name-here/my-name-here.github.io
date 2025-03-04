@@ -131,7 +131,7 @@ d3.csv(
 
     svg
         .append('text')
-        .text('MPG')
+        .text(`distance from average mpg(average is ${averageVal})`)
         .attr('x', 150)
         .attr('y', 0);
 
