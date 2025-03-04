@@ -106,7 +106,7 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
-        var legend = d3.legendColor()
+    var legend = d3.legendColor()
 		.title("Color Legend: number of cylinders")
 		.titleWidth(100)
         .cells(11) // change the number of cells during demo 
