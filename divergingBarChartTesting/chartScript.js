@@ -103,7 +103,7 @@ d3.csv(
         // since x is based on distance from average, we have x(0) as the output in this case
         // if it is not true, then we want x(dist), since it will be less than the average, so we want the start early
         // this will make the width have it end at 0
-        .attr('x', (d) => (d['economy (mpg)']-averageVal) >= 0 ? x(0): x(d['economy (mpg)']-avg))
+        .attr('x', (d) => (d['economy (mpg)']-averageVal) >= 0 ? x(0): x(d['economy (mpg)']-averageVal))
         .attr('width', (d) => x(d['economy (mpg)']))
         .attr('fill', d => colorScale(d['economy (mpg)']));
 
