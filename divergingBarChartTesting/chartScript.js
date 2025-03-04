@@ -95,7 +95,15 @@ d3.csv(
         .attr('class', 'bar')
         .attr('y', (d) => y(d.name))
         .attr('height', y.bandwidth())
-        .attr('x', (d) => 0)
+        // if distance from average of the point is negative, then we need to shift it, so that width remains positive
+        // we can use a ternary operation to check the sign and set the value accordingly
+        // d['economy (mpg)']-avg gives signed distance from average
+        // condition is d['economy (mpg)']-avg) >= 0, or the value is greater or equal to the average.
+        // in this case, then we want to draw the bar from the average, since it is going above it
+        // since x is based on distance from average, we have x(0) as the output in this case
+        // if it is not true, then we want x(dist), since it will be less than the average, so we want the start early
+        // this will make the width have it end at 0
+        .attr('x', (d) => (d['economy (mpg)']-avg) >= 0 ? x(0): x(d['economy (mpg)']-avg))
         .attr('width', (d) => x(d['economy (mpg)']))
         .attr('fill', d => colorScale(d['economy (mpg)']));
 
