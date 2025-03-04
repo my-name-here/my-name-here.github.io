@@ -118,7 +118,8 @@ d3.csv(
         .text((d) => `mpg: ${d['economy (mpg)']}`)
         .attr('y', (d) => y(d.name) + 15)
         // place mpg labels on opposite side of average as bar, for readablilty
-        .attr('x', (d) => (d['economy (mpg)']-averageVal) >= 0 ? x(0): x(d['economy (mpg)']-averageVal));
+        // should be simmilar to ternary above, but if it is negative, then x(0), if positive, is shifted to the left a bit
+        .attr('x', (d) => (d['economy (mpg)']-averageVal) >= 0 ? x(0)-50: x(0));
         
 
     svg
