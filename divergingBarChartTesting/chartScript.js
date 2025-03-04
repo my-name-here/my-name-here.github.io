@@ -138,7 +138,7 @@ d3.csv(
     svg
         .append('text')
 
-        .text('barchart of distance from avg mpg of cars, sorted by name')
+        .text('Divergent barchart of distance from avg mpg of cars, sorted by name')
         .attr('class', 'title')
         .attr('x', 0)
         .attr('y', -margin.top / 2);
