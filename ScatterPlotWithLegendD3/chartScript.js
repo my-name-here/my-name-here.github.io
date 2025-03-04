@@ -44,11 +44,12 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
         .range([ 0, width]);
     
 
-
-    const color = d3.scaleLinear()
-        .domain([d3.min(data, d => d["cylinders"]), d3.max(data, d => d["cylinders"])])
+    var colorScale = d3.scaleSequential()
+        .interpolator(d3.interpolateRdBu)
         .nice()
-        .range([ 50, 255]);
+        .domain([d3.min(data, d => d["cylinders"]), d3.max(data, d => d["cylinders"])]);
+
+
     // Add X and Y axes
     svg.append("g")
         .attr("class", "axis axis-x")
@@ -73,7 +74,7 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
         .attr("cx", d => x(d["economy (mpg)"]))
         .attr("cy", d => y(d["weight (lb)"]))
         .attr("r", 10)
-        .attr("fill", d =>  `rgb(${color(d["power (hp)"])}, ${color(d["power (hp)"])}, ${color(d["power (hp)"])})`)
+        .attr("fill", d =>  colorScale(d.cylinders))
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
 
     
