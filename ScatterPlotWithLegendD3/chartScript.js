@@ -25,7 +25,7 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
         d["economy (mpg)"] = +d["economy (mpg)"];
         d["weight (lb)"] = +d["weight (lb)"]
         d["cylinders"] = +d["cylinders"]
-        d["power (hp)"] = +d["power (hp)"]
+
         d.name = d.name;
     });
     data.sort((a,b) => a.name>b.name);
@@ -43,13 +43,10 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
         .nice()
         .range([ 0, width]);
     
-    const size = d3.scaleLinear()
-        .domain([d3.min(data, d => d["cylinders"]), d3.max(data, d => d["cylinders"])])
-        .nice()
-        .range([ minSize, maxSize]);
+
 
     const color = d3.scaleLinear()
-        .domain([d3.min(data, d => d["power (hp)"]), d3.max(data, d => d["power (hp)"])])
+        .domain([d3.min(data, d => d["cylinders"]), d3.max(data, d => d["cylinders"])])
         .nice()
         .range([ 50, 255]);
     // Add X and Y axes
@@ -75,7 +72,7 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
     bars.append("circle")
         .attr("cx", d => x(d["economy (mpg)"]))
         .attr("cy", d => y(d["weight (lb)"]))
-        .attr("r", d => size(d["cylinders"]))
+        .attr("r", 10)
         .attr("fill", d =>  `rgb(${color(d["power (hp)"])}, ${color(d["power (hp)"])}, ${color(d["power (hp)"])})`)
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
 
