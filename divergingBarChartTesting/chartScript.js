@@ -48,6 +48,7 @@ d3.csv(
     // since we know that the maximum possible distance must happen at one of those 
     const distLower = averageVal - minValue; // since average is bigger than min, this will be positive
     const distUpper = maxValue - averageVal; // since max is bigger than average, this is positive
+    const maxDist = Math.max(distLower, distUpper);// the maximum distance is the maximum of those values
     // Define X and Y scales
     const y = d3
         .scaleBand()
