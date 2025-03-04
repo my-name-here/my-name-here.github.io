@@ -1,0 +1,35 @@
+/* from the class example*/
+/* CSS styles for the chart */
+ .bar {
+    fill: steelblue;
+}
+
+/*.bar:hover {
+    fill: orange;
+}*/
+
+.axis-x path,
+.axis-y path {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis-x .tick line,
+.axis-y .tick line {
+    stroke: #ccc;
+}
+
+.axis text {
+    font-size: 12px;
+}
+
+.title{
+    font-size:12px;
+    font-weight: bold;
+}
+.barLabel{
+    font-size: 12px;
+    fill: black;
+
+}
