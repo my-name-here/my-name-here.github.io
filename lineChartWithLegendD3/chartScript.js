@@ -141,7 +141,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("x", 0)
         .attr("y", -margin.top/2)
     var legend = d3.legendColor()
-		.title("Color Legend: number of cylinders")
+		.title("Color Legend: displacement range")
 		.titleWidth(100)
         .cells(11) // change the number of cells during demo 
         .scale(colorScale);
