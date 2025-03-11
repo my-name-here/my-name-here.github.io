@@ -20,6 +20,18 @@ const svg = d3.select("#chart-container")
 
 // a function that takes a displacement, and converts it to a string representing the range
 function dispRang(i){
+    if (i < 100){
+        return "0-100";
+    }
+    else if (i > 100 && i <200){
+        return "100-200";
+    }
+    else if (i > 200 && i <300){
+        return "200-300"
+    }
+    else{
+        return "300+"
+    }
     
 }
 // Read data from CSV
