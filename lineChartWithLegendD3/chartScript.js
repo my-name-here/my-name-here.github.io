@@ -82,7 +82,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     // see https://d3js.org/d3-array/group and https://d3js.org/d3-array/transform
     yearList = d3.map(d3.groups(data,d=>d.year),D=>D[0])
     console.log(yearList)
-    consol
+    
     bars =  svg.selectAll(".bar")
         .data(yearList)
         .enter()
