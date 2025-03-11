@@ -35,7 +35,7 @@ function dispRang(i){
     
 }
 // Read data from CSV
-d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28dc2f8f8e/raw/f507ae593a044f4176a1908f1e3b56ff4d54c723/carsDataVis.csv").then(function (data) {
+d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/carsFakeData.csv").then(function (data) {
 
     // Convert string values to numbers
     data.forEach(function (d) {
