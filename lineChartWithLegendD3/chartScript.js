@@ -98,6 +98,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     dispRangeList = ["0-100","100-200", "200-300","300+"]
     // see https://d3js.org/d3-array/transform for cross
     console.log(d3.cross(yearList,dispRangeList))
+    dataSpots = d3.cross(yearList,dispRangeList)
     bars =  svg.selectAll(".bar")
         .data(yearList)
         .enter()
