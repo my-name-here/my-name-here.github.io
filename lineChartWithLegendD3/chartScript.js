@@ -107,9 +107,9 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     bars.append("line")
         .attr("test", d => `${d}`)
         .attr("x1", d => x(d3.timeParse("%y")(d[0])))
-        .attr("y1", d => y(years.get(d[0]).get("300+")))
+        .attr("y1", d => y(years.get(d[0]).get(d[1])))
         .attr("x2", d => x(d3.timeParse("%y")(Math.min(d[0]+1, maxYear))))
-        .attr("y2", d => y(years.get(Math.min(d[0]+1, maxYear)).get("300+")))
+        .attr("y2", d => y(years.get(Math.min(d[0]+1, maxYear)).get(d[1])))
         .attr("stroke-width", 1)
         .attr("stroke", "black")
 
