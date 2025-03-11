@@ -1,9 +1,9 @@
 // basic framework from class example, edited to work for my needs
 // started with a copy of my bar chart, and edited
 // Set up the SVG container
-const svgWidth = 1200;
-const svgHeight = 1000;
-const margin = { top: 50, right: 200, bottom: 100, left: 250 };
+const svgWidth = 1500;
+const svgHeight = 400;
+const margin = { top: 50, right: 500, bottom: 100, left: 250 };
 const width = svgWidth - margin.left - margin.right;
 const height = svgHeight - margin.top - margin.bottom;
 
@@ -126,7 +126,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
 
     svg.append("text")
-        .text("avg mpg")
+        .text("displacement range")
         .attr("x", -100)
         .attr("y", height/2)
         
@@ -149,6 +149,6 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 		
 
     svg.append("g")
-        .attr("transform", `translate(${width+10},0)`)
+        .attr("transform", `translate(${width+margin.right/4},0)`)
         .call(legend);
 });
