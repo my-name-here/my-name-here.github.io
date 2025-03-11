@@ -24,7 +24,8 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
     // Convert string values to numbers
     data.forEach(function (d) {
         d["economy (mpg)"] = +d["economy (mpg)"];
-        d.year = +d.year
+        d.cylinders = +d.cylinders;
+        d.year = +d.year;
         d.name = d.name;
     });
 
