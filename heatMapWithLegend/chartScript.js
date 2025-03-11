@@ -81,7 +81,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     
     svg.append("g")
         .attr("class", "axis axis-x")
-        // ${x(d3.timeParse("%y")(72)-d3.timeParse("%y")(71))/2} shifts to middle of year box
+        // ${x(d3.timeParse("%y")(72)-d3.timeParse("%y")(71))/2} shifts axis label for year to middle of year box
         .attr("transform", `translate(${x(d3.timeParse("%y")(72)-d3.timeParse("%y")(71))/2}, ${height})`)
         .call(d3.axisBottom(x).ticks(10));
 
