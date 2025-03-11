@@ -140,4 +140,14 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
+    var legend = d3.legendColor()
+		.title("Color Legend: number of cylinders")
+		.titleWidth(100)
+        .cells(11) // change the number of cells during demo 
+        .scale(colorScale);
+		
+
+    svg.append("g")
+        .attr("transform", `translate(${width},0)`)
+        .call(legend);
 });
