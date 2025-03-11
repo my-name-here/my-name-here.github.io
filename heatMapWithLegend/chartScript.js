@@ -68,8 +68,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .nice()
         .range([ 0, width]);
     
-    // ordinal scale, see https://d3js.org/d3-scale/ordinal
-    var colorScale = d3.scaleOrdinal()
+    
+    var colorScale = d3.scaleSequential()
         .domain( ["0-100","100-200","200-300", "300+"])
 
         // colors from colorbrewer
