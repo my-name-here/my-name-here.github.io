@@ -19,7 +19,7 @@ const svg = d3.select("#chart-container")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
 // Read data from CSV
-d3.csv("cars.csv").then(function (data) {
+d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28dc2f8f8e/raw/f507ae593a044f4176a1908f1e3b56ff4d54c723/carsDataVis.csv").then(function (data) {
 
     // Convert string values to numbers
     data.forEach(function (d) {
