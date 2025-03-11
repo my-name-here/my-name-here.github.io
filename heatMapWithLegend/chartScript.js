@@ -111,8 +111,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("y", d => y(d[1]))
         .attr("width", d => x(d3.timeParse("%y")(d[0]+1)-d3.timeParse("%y")(d[0])))
         .attr("height", d => bandwidth)
-        .attr("stroke-width", 2)
-        .attr("stroke", d=>colorScale(d[1]))
+        .attr("stroke-width", 1)
+        .attr("stroke", black)
 
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
 
