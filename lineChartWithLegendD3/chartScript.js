@@ -100,7 +100,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     console.log(d3.cross(yearList,dispRangeList))
     dataSpots = d3.cross(yearList,dispRangeList)
     bars =  svg.selectAll(".bar")
-        .data(yearList)
+        .data(dataSpots)
         .enter()
         .append("g")
     console.log(years.get(72).get("300+"))
