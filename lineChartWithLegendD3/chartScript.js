@@ -54,7 +54,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     console.log(years)
     // Define X and Y scales
     const y = d3.scaleLinear()
-        .domain([d3.min(data, d => d["economy (mpg)"])-2, d3.max(data, d => d["economy (mpg)"]+2])
+        .domain([d3.min(data, d => d["economy (mpg)"])-2, d3.max(data, d => d["economy (mpg)"])+2])
         .nice()
         .range([ 0, -height])
         //.padding(0.1);
