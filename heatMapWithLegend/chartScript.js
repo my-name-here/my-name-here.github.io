@@ -108,7 +108,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("test", d => `${d}`)
         .attr("x", d => x(d3.timeParse("%y")(d[0])))
         .attr("y1", d => y(d[1]))
-        .attr("width", d => x(d3.timeParse("%y")(d[0]+1)-d3.timeParse("%y")(d[0]))))
+        .attr("width", d => x(d3.timeParse("%y")(d[0]+1)-d3.timeParse("%y")(d[0])))
         .attr("y2", d => y(years.get(Math.min(d[0]+1, maxYear)).get(d[1])))
         .attr("stroke-width", 2)
         .attr("stroke", d=>colorScale(d[1]))
