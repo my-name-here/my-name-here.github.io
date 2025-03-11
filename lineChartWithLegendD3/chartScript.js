@@ -48,7 +48,7 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
     data.sort((a,b) => a.name>b.name);
     console.log(data);
     // rollup code based on https://d3js.org/d3-array/group and https://observablehq.com/@d3/d3-group
-
+    // using a function as a key is something we do all the time in attributes
     const years = d3.rollup(data, (D) => d3.mean(D, d=>d["economy (mpg)"]), d => d.year, d => dispRang(d["displacement (cc)"]));
     console.log(years)
     // Define X and Y scales
