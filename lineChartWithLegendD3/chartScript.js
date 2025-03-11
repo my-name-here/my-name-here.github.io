@@ -86,9 +86,9 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
     bars.append("line")
         .attr("test", d => `${years.get(Math.min(d[0], maxYear))}`)
         .attr("x1", d => x(d3.timeParse("%y")(d[0])))
-        .attr("y1", d => y(years[d[0]]))
+        .attr("y1", d => y(years[d[0]]["300+"]))
         .attr("x2", d => x(d3.timeParse("%y")(Math.min(d[0]+1, maxYear))))
-        .attr("y2", d => y(years[(Math.min(d[0]+1, maxYear))]))
+        .attr("y2", d => y(years[(Math.min(d[0]+1, maxYear))]["300+"]))
         .attr("stroke-width", 1)
         .attr("stroke", "black")
 
