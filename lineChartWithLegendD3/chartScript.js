@@ -55,7 +55,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
     console.log(years)
     console.log(d3.min(yearTmp, D1 => d3.min(D1[1], d=>d[1])))
-
+    console.log(d3.max(yearTmp, D1 => d3.max(D1[1], d=>d[1])))
     // Define X and Y scales
     const y = d3.scaleLinear()
         .domain([d3.min(yearTmp, D1 => d3.min(D1[1], d=>d[1]))-2, d3.max(yearTmp, D1 => d3.max(D1[1], d=>d[1]))+2])
@@ -87,7 +87,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     // see https://d3js.org/d3-array/group and https://d3js.org/d3-array/transform
     yearList = d3.map(d3.groups(data,d=>d.year),D=>D[0])
     console.log(yearList)
-    
+    dispRangeList = ["0-100","100-200", "200-300","300+"]
     bars =  svg.selectAll(".bar")
         .data(yearList)
         .enter()
@@ -103,16 +103,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("stroke", "black")
 
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
-    bars.append("circle")
-        .attr("test", d => `${years.get(Math.min(d[0], maxYear))}`)
-        .attr("cx", d => x(d3.timeParse("%y")(d[0])))
-        .attr("cy", d => y(years.get(d[0])))
-       
-        .attr("r", 2)
 
-        .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
-
-    
     // bars.append("text")
     //     .attr("class", "barLabel")
     //     .text(d => `mpg: ${(d["economy (mpg)"])}`)
