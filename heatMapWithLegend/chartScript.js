@@ -146,7 +146,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     var legend = d3.legendColor()
 		.title("Color Legend: avg mpg")
 		.titleWidth(100)
-        .cells(11) // change the number of cells during demo 
+        .cells(7) // change the number of cells during demo 
         .scale(colorScale);
 		
 
