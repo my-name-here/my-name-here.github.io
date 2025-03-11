@@ -70,7 +70,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     
     
     var colorScale = d3.scaleSequential()
-        .domain( ["0-100","100-200","200-300", "300+"])
+        .domain( [d3.min(yearTmp, D1 => d3.min(D1[1], d=>d[1])),d3.max(yearTmp, D1 => d3.max(D1[1], d=>d[1]))])
 
         // colors from colorbrewer
         .range(["#1b9e77", "#d95f02", "#7570b3", "#e7298a"])
