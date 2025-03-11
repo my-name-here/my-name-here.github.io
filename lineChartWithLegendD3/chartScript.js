@@ -87,7 +87,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .data(yearList)
         .enter()
         .append("g")
-    
+    console.log(years.get(72).get("300+"))
     bars.append("line")
         .attr("test", d => `${d}`)
         .attr("x1", d => x(d3.timeParse("%y")(d)))
