@@ -137,12 +137,12 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
     svg.append("text")
     
-        .text("line plot of the avg mpg per year, colored by displacement")
+        .text("heatmap of the avg mpg per year for different displacement ranges")
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
     var legend = d3.legendColor()
-		.title("Color Legend: number of cylinders")
+		.title("Color Legend: avg mpg")
 		.titleWidth(100)
         .cells(11) // change the number of cells during demo 
         .scale(colorScale);
