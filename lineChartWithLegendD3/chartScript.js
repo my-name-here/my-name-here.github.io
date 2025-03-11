@@ -18,6 +18,10 @@ const svg = d3.select("#chart-container")
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
+// a function that takes a displacement, and converts it to a string representing the range
+function dispRang(i){
+    
+}
 // Read data from CSV
 d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28dc2f8f8e/raw/f507ae593a044f4176a1908f1e3b56ff4d54c723/carsDataVis.csv").then(function (data) {
 
@@ -31,8 +35,9 @@ d3.csv("https://gist.githubusercontent.com/my-name-here/945eb7a96c48a4e44d4e8d28
 
     data.sort((a,b) => a.name>b.name);
     console.log(data);
-    // rollup code based on https://observablehq.com/@d3/d3-group
-    const years = d3.rollup(data, v => d3.mean(v, d => d["economy (mpg)"]), d => d.year);
+    // rollup code based on https://d3js.org/d3-array/group and https://observablehq.com/@d3/d3-group
+
+    const years = d3.rollup(data, (D) => d3.mean(D, d=>d["economy (mpg)"]), d => d.year, d => d["displacement (cc)"]);
     console.log(years)
     // Define X and Y scales
     const y = d3.scaleLinear()
