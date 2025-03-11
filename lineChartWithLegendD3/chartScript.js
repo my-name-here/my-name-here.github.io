@@ -110,7 +110,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("y1", d => y(years.get(d[0]).get(d[1])))
         .attr("x2", d => x(d3.timeParse("%y")(Math.min(d[0]+1, maxYear))))
         .attr("y2", d => y(years.get(Math.min(d[0]+1, maxYear)).get(d[1])))
-        .attr("stroke-width", 1)
+        .attr("stroke-width", 2)
         .attr("stroke", d=>colorScale(d[1]))
 
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
