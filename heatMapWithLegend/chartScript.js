@@ -113,7 +113,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("height", d => bandwidth)
         .attr("stroke-width", 1)
         .attr("stroke", black)
-
+        .attr("fill", d=>colorScale(years.get(d[0]).get(d[1])))
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
 
     // bars.append("text")
