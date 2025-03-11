@@ -57,8 +57,9 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     console.log(d3.min(yearTmp, D1 => d3.min(D1[1], d=>d[1])))
     console.log(d3.max(yearTmp, D1 => d3.max(D1[1], d=>d[1])))
     // Define X and Y scales
-    const y = d3.scaleLinear()
-        .domain([d3.min(yearTmp, D1 => d3.min(D1[1], d=>d[1]))-2, d3.max(yearTmp, D1 => d3.max(D1[1], d=>d[1]))+2])
+    //see https://d3js.org/d3-scale/point
+    const y = d3.scalePoint()
+        .domain( ["0-100","100-200","200-300", "300+"])
         .nice()
         .range([ 0, -height])
         //.padding(0.1);
@@ -104,10 +105,10 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .enter()
         .append("g")
     console.log(years.get(72).get("300+"))
-    bars.append("line")
+    bars.append("rect")
         .attr("test", d => `${d}`)
-        .attr("x1", d => x(d3.timeParse("%y")(d[0])))
-        .attr("y1", d => y(years.get(d[0]).get(d[1])))
+        .attr("x", d => x(d3.timeParse("%y")(d[0])))
+        .attr("y1", d => y(d[1]))
         .attr("x2", d => x(d3.timeParse("%y")(Math.min(d[0]+1, maxYear))))
         .attr("y2", d => y(years.get(Math.min(d[0]+1, maxYear)).get(d[1])))
         .attr("stroke-width", 2)
