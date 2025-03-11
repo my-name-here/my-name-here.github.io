@@ -60,7 +60,6 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     //see https://d3js.org/d3-scale/point
     const y = d3.scalePoint()
         .domain( ["0-100","100-200","200-300", "300+"])
-        .nice()
         .range([ 0, -height])
         //.padding(0.1);
 
