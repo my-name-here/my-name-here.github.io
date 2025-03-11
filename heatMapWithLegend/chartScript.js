@@ -96,7 +96,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     yearList = d3.map(d3.groups(data,d=>d.year),D=>D[0])
     console.log(yearList)
     dispRangeList = ["0-100","100-200", "200-300","300+"]
-    bandwidth = y("100-200")-y("0-100")
+    bandwidth = Math.abs(y("100-200")-y("0-100"))
     // see https://d3js.org/d3-array/transform for cross
     console.log(d3.cross(yearList,dispRangeList))
     dataSpots = d3.cross(yearList,dispRangeList)
