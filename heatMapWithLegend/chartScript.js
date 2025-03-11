@@ -57,8 +57,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     console.log(d3.min(yearTmp, D1 => d3.min(D1[1], d=>d[1])))
     console.log(d3.max(yearTmp, D1 => d3.max(D1[1], d=>d[1])))
     // Define X and Y scales
-    //see https://d3js.org/d3-scale/point
-    const y = d3.scalePoint()
+    //see https://d3js.org/d3-scale/band
+    const y = d3.scaleBand()
         .domain( ["0-100","100-200","200-300", "300+"])
         .range([ 0, -height])
         //.padding(0.1);
