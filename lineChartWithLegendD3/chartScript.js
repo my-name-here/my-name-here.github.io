@@ -125,7 +125,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
     svg.append("text")
     
-        .text("line plot of the avg mpg per year")
+        .text("line plot of the avg mpg per year, colored by displacement")
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
