@@ -78,10 +78,11 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     // Add bars
     // adding multiple elements on same level with groups based on https://stackoverflow.com/questions/65434376/append-two-elements-in-svg-at-the-same-level
     let maxYear = d3.max(data, d => d["year"])
-    console.log(years[0])
+
     // see https://d3js.org/d3-array/group and https://d3js.org/d3-array/transform
     yearList = d3.map(d3.groups(data,d=>d.year),D=>D[0])
     console.log(yearList)
+    consol
     bars =  svg.selectAll(".bar")
         .data(yearList)
         .enter()
@@ -90,9 +91,9 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     bars.append("line")
         .attr("test", d => `${d}`)
         .attr("x1", d => x(d3.timeParse("%y")(d)))
-        .attr("y1", d => y(years[d]["300+"]))
+        .attr("y1", d => y(years.get(d).get("300+")))
         .attr("x2", d => x(d3.timeParse("%y")(Math.min(d+1, maxYear))))
-        .attr("y2", d => y(years[(Math.min(d+1, maxYear))]["300+"]))
+        .attr("y2", d => y(years.get(Math.min(d+1, maxYear)).get("300+")))
         .attr("stroke-width", 1)
         .attr("stroke", "black")
 
