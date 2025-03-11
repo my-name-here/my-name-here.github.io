@@ -54,7 +54,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     const yearTmp = d3.rollups(data, (D) => d3.mean(D, d=>d["economy (mpg)"]), d => d.year, d => dispRang(d["displacement (cc)"]));
 
     console.log(years)
-    console.log(yearTmp)
+    console.log(d3.min(yearTmp, D => d3.min(D, d=>d3.min(D,x=>x[1]))))
+
     // Define X and Y scales
     const y = d3.scaleLinear()
         .domain([d3.min(yearTmp, D => d3.min(D, d=>d[1]))-2, d3.max(data, d => d["economy (mpg)"])+2])
