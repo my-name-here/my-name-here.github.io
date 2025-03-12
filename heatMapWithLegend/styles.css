@@ -40,6 +40,6 @@
     font-size: 20px;
     fill: black;
     background-color: white;
-    border-style: double;
-
+    border-style: double;/* https://www.w3schools.com/css/css_border.asp*/
+    
 }
