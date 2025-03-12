@@ -166,11 +166,13 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
 
     svg.append("text")
+        .attr("class","axisLabelY")
         .text("displacement range")
         .attr("x", -margin.left+10)
         .attr("y", height/2)
         
     svg.append("text")
+        .attr("class","axisLabelX")
         .text("year")
         .attr("x", width/2)
         .attr("y", height+margin.bottom/2)
