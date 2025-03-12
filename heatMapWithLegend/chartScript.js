@@ -129,12 +129,13 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("stroke", "black")
         .attr("fill", d=>colorScale(years.get(d[0]).get(d[1])))
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
-        .on("mouseover", function(d){
+        // needs to be event,d, so that the value of d is passed in along with the mouse event
+        .on("mouseover", function(event, d){
+            console.log(d[0])
             d3.select(".tooltip")
-                .text(d=>`value: ${years.get(d[0]).get(d[1])}`)
+                .text(`${years.get(d[0]).get(d[1])}`)
                 .style("opacity", 1)
-                
-            }
+        }
         )
         .on("mouseout", function(d){
             d3.select(".tooltip")
