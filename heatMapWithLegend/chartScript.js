@@ -106,7 +106,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     // new div for our tooltip, based on https://mappingwithd3.com/tutorials/basics/tooltip/
     d3.select("body")
         .append("div")
-
+        .attr('id', 'tooltip')
+    
     bars =  svg.selectAll(".bar")
         .data(dataSpots)
         .enter()
