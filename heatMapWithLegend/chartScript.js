@@ -135,8 +135,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
             d3.select(".tooltip")
                 .text(`avg mpg: \n${years.get(d[0]).get(d[1])}`)
                 .style("opacity", 1)
-                .style("left", `${event.pageX}px`)
-                .style("top", `${event.pageY}px`)
+                .style("left", `${event.pageX+10}px`)
+                .style("top", `${event.pageY+10}px`)
         }
         )
         .on("mouseout", function(event,d){
@@ -146,12 +146,14 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
             }
         )
         .on("mousemove", function(event, d){
-            
+
             d3.select(".tooltip")
-                .text(`avg mpg: \n${years.get(d[0]).get(d[1])}`)
+                
+                .text(`avg mpg: 
+                    ${years.get(d[0]).get(d[1])}`)
                 .style("opacity", 1)
-                .style("left", `${event.pageX}px`)
-                .style("top", `${event.pageY}px`)
+                .style("left", `${event.pageX+10}px`)
+                .style("top", `${event.pageY+10}px`)
             }
         )
 
