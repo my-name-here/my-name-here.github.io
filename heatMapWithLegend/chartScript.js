@@ -135,6 +135,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
             d3.select(".tooltip")
                 .text(`avg mpg: ${years.get(d[0]).get(d[1])}`)
                 .style("opacity", 1)
+                .style("left", `${event.pageX}px`)
+                .style("top", `${event.pageY}px`)
         }
         )
         .on("mouseout", function(event,d){
