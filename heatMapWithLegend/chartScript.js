@@ -148,8 +148,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
             d3.select(".tooltip")
                 
-                .html(`avg mpg: <br>
-                    ${years.get(d[0]).get(d[1])}`)
+                .html(` avg mpg:  <br>
+                     ${years.get(d[0]).get(d[1])} `)
                 .style("opacity", 1)
                 .style("left", `${event.pageX+15}px`)
                 .style("top", `${event.pageY+15}px`)
