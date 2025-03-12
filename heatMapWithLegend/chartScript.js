@@ -131,7 +131,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
         .on("mouseover", function(d){
             d3.select(".tooltip")
-                
+                .style("opacity", 1)
+                .text(d => `value: ${years.get(d[0]).get(d[1])}`)
             }
         )
 
