@@ -46,6 +46,10 @@
     padding-right: 5px;
 }
 
-.axisLabel{
-    font-size: 20px;
+.axisLabelX{
+    font-size: 25px;
+}
+
+.axisLabelY{
+    font-size: 15px;
 }
