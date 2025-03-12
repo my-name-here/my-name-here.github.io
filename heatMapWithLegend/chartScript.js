@@ -135,6 +135,12 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
                 .text(d => `value: ${years.get(d[0]).get(d[1])}`)
             }
         )
+        .on("mouseout", function(d){
+            d3.select(".tooltip")
+                .style("opacity", 0)
+                
+            }
+        )
 
     // bars.append("text")
     //     .attr("class", "barLabel")
