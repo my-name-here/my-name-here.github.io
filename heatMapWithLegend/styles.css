@@ -33,3 +33,9 @@
     fill: black;
 
 }
+
+.tooltip{
+    position: absolute;/* absolute lets tooltip overlap*/
+    opacity: 0;/* initially make tooltip transparent*/
+
+}
