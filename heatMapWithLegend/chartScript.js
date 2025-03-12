@@ -137,7 +137,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
                 .style("opacity", 1)
         }
         )
-        .on("mouseout", function(d){
+        .on("mouseout", function(event,d){
             d3.select(".tooltip")
                 .style("opacity", 0)
                 
