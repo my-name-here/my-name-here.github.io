@@ -181,7 +181,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     
         .text("heatmap of the avg mpg per year for different displacement ranges")
         .attr("class", "title")
-        .attr("x", width/2)
+        .attr("x", (width-margin.left)/2-margin.right)
         .attr("y", -margin.top/2)
     var legend = d3.legendColor()
 		.title("Color Legend: avg mpg")
