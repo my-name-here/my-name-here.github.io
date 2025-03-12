@@ -107,6 +107,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .enter()
         .append("g")
     console.log(years.get(72).get("300+"))
+
+    // tooltips will be implemented using https://mappingwithd3.com/tutorials/basics/tooltip/
     bars.append("rect")
         .attr("test", d => `${d}`)
         .attr("x", d => x(d3.timeParse("%y")(d[0])))
