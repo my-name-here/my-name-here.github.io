@@ -3,7 +3,7 @@
 // Set up the SVG container
 const svgWidth = 1550;
 const svgHeight = 600;
-const margin = { top: 50, right: 200, bottom: 100, left: 300 };
+const margin = { top: 50, right: 200, bottom: 100, left: 200 };
 const width = svgWidth - margin.left - margin.right;
 const height = svgHeight - margin.top - margin.bottom;
 
@@ -129,7 +129,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
     svg.append("text")
         .text("displacement range")
-        .attr("x", -margin.left/2)
+        .attr("x", -margin.left+10)
         .attr("y", height/2)
         
     svg.append("text")
