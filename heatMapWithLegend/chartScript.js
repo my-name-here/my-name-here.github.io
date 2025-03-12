@@ -2,8 +2,8 @@
 // started with a copy of my bar chart, and edited
 // Set up the SVG container
 const svgWidth = 1550;
-const svgHeight = 400;
-const margin = { top: 50, right: 500, bottom: 100, left: 300 };
+const svgHeight = 600;
+const margin = { top: 50, right: 200, bottom: 100, left: 300 };
 const width = svgWidth - margin.left - margin.right;
 const height = svgHeight - margin.top - margin.bottom;
 
@@ -151,6 +151,6 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 		
 
     svg.append("g")
-        .attr("transform", `translate(${width+margin.right/4},0)`)
+        .attr("transform", `translate(${width+margin.right/2},0)`)
         .call(legend);
 });
