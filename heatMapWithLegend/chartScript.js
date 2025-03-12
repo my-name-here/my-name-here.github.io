@@ -108,6 +108,8 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .append("div")
         .attr('id', 'tooltip')
     
+
+        
     bars =  svg.selectAll(".bar")
         .data(dataSpots)
         .enter()
