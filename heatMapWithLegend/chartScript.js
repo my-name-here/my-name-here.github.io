@@ -34,6 +34,8 @@ function dispRang(i){
     }
     
 }
+
+
 // Read data from CSV
 d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/carsFakeData.csv").then(function (data) {
 
@@ -127,6 +129,10 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("stroke", "black")
         .attr("fill", d=>colorScale(years.get(d[0]).get(d[1])))
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
+        .on("mouseover", function(d){
+
+            }
+        )
 
     // bars.append("text")
     //     .attr("class", "barLabel")
