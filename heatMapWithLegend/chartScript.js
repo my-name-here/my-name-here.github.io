@@ -133,7 +133,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .on("mouseover", function(event, d){
             console.log(d[0])
             d3.select(".tooltip")
-                .text(`${years.get(d[0]).get(d[1])}`)
+                .text(`avg mpg: ${years.get(d[0]).get(d[1])}`)
                 .style("opacity", 1)
         }
         )
