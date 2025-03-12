@@ -131,7 +131,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
         // needs to be event,d, so that the value of d is passed in along with the mouse event
         .on("mouseover", function(event, d){
-            console.log(d[0])
+            
             d3.select(".tooltip")
                 .text(`avg mpg: ${years.get(d[0]).get(d[1])}`)
                 .style("opacity", 1)
