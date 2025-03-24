@@ -48,10 +48,9 @@ const svg = d3.select("#chart-container")
                 (nodes[link.Dest] = {name: link.Dest});
             link.value = +link.value;
         });
-        // will color the points based on whether value is positive or negative, using linear scale to get it all positive, but shouldn't matter
-
-        valueScale = d3.scaleLinear()
-            .domain([-1,1])
-            .range([0,100]);
-        // now we style the nodes based on the value, if >50, then blue, <50 red, 50 is white
+        // use diverging color scale instead of dealing with manual coloring
+        var colorScale = d3.scaleSequential()
+            .interpolator(d3.interpolateRdBu)
+            .nice()
+            .domain([-1, 1]);// since values from -1 to 1
     });
