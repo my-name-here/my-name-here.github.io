@@ -108,7 +108,7 @@ const nodes = graph.nodes.map(d => ({...d}));
             .attr("x2", d => d.target.x)
             .attr("y2", d => d.target.y)
             // set color of links based on value
-            .attr("stroke-width", 2)// set a stroke width
+            .attr("stroke-width", 3)// set a stroke width
 
             .attr("stroke", d=>colorScale(d.value));
     
