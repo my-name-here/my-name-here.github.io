@@ -43,5 +43,8 @@ const svg = d3.select("#chart-container")
             // node either uses existing node if src already a node, or creates a new node in correct format if not
             link.Src = nodes[link.Src] || 
                 (nodes[link.Src] = {name: link.Src});
+            // now we need to do the same witht he destination node, creating it if it doesn;t exist
+            link.Dest = nodes[link.Dest] || 
+                (nodes[link.Dest] = {name: link.Dest});
 
 
