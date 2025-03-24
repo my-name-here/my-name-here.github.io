@@ -79,6 +79,7 @@ const nodes = graph.nodes.map(d => ({...d}));
       .force("charge", d3.forceManyBody())
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", ticked);
+    simulation.stop();
 
     console.log(links)
     // lnik code based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
@@ -93,9 +94,9 @@ const nodes = graph.nodes.map(d => ({...d}));
         .data(nodes)
         .join("circle")
 
-console.log(nodes);
+
     //ticked based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
-    function ticked() {
+    function tick() {
         link
             // start and end set to current positions
             .attr("x1", d => d.source.x)
