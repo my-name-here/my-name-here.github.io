@@ -94,7 +94,7 @@ const nodes = graph.nodes.map(d => ({...d}));
         .selectAll()
         .data(nodes)
         .join("circle")
-
+    simulation.tick(1)
 
     //ticked based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
     function ticked() {
