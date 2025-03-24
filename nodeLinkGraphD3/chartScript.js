@@ -74,8 +74,11 @@ const nodes = graph.nodes.map(d => ({...d}));
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
       //.force("link", d3.forceLink(links))
-      // another fix based on github issues
-      .force('link', d3.forceLink(links).id(function(d) { return d.id; }))
+      // another fix based on github issues(https://github.com/d3/d3-force/issues/32)
+      .force('link', d3.forceLink(links).id(function(d) { return d.id; })
+        // distance from on https://d3js.org/d3-force/link
+        .distance(100)
+    )
       // force strength adjsutment from https://d3js.org/d3-force/many-body
       .force("charge", d3.forceManyBody().strength(-500))
       .force("center", d3.forceCenter(width / 2, height / 2))
