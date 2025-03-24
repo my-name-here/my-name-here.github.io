@@ -22,8 +22,6 @@ const svg = d3.select("#chart-container")
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-// Read data from CSV
-
     svg.append("text")
     
         .text("force directed layout")
