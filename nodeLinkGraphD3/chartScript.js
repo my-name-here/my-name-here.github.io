@@ -99,7 +99,7 @@ const nodes = graph.nodes.map(d => ({...d}));
         // adding text based on https://stackoverflow.com/a/60691259
         .join("g")
     node.append("circle")
-    node.append("text")
+    node.append("text").text(d=>d.id)
 
 
     //ticked based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
