@@ -80,7 +80,7 @@ const nodes = graph.nodes.map(d => ({...d}));
         .distance(100)
     )
       // force strength adjsutment from https://d3js.org/d3-force/many-body
-      .force("charge", d3.forceManyBody().strength(-500))
+      .force("charge", d3.forceManyBody().strength(-1500))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", ticked);
 
