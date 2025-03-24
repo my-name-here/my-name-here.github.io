@@ -33,3 +33,7 @@ const svg = d3.select("#chart-container")
         .attr("transform", `translate(${width},0)`)
         .call(legend);
 
+    var colorScale = d3.scaleSequential()
+        .interpolator(d3.interpolateRdBu)
+        .nice()
+        .domain([-1, 1]);
