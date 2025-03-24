@@ -36,11 +36,11 @@ const svg = d3.select("#chart-container")
         .nice()
         .domain([-1, 1]);
     // load from csv, based on https://d3js.org/d3-fetch
-    var nodes = await d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodesList.csv",).then(function (data) {
+    var nodes = d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodesList.csv",).then(function (data) {
         // Convert string values to numbers
         data.forEach(function (d) {
-            d['economy (mpg)'] = +d['economy (mpg)'];
-            d.name = d.name;
+            d['nodes'] = d['s'];
+
     
         });
     });
