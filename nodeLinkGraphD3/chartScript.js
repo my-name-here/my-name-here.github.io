@@ -37,19 +37,18 @@ const svg = d3.select("#chart-container")
         .domain([-1, 1]);
     
    // based on the code in the source(https://gist.github.com/d3noob/5155181)
-   d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv", function(data) {
-    var nodes = {};
-    var links = {};
+   d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv").then(function (data)  {
+    var nodes = [];
+    var links = [];
     //loop over the links in the csv
     data.forEach(function(d) {
         // node either uses existing node if src already a node, or creates a new node in correct format if not
-        d.Src = nodes[d.Src] || 
-            (nodes[d.Src] = {name: d.Src});
+        nodes.push( {name: d.Src});
         // now we need to do the same witht he destination node, creating it if it doesn;t exist
-        d.Dest = nodes[d.Dest] || 
-            (nodes[d.Dest] = {name: d.Dest});
+        nodes.push( {name: d.Dest});
+
         d.value = +d.value;
-        links.push({"src":d.Src, "dest": d.Dest, "val": d.Val});
+        links.push({"src":d.Src, "dest": d.Dest, "val": +d.Val});
     });
     console.log(nodes);
 });
