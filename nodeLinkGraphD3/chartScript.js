@@ -35,8 +35,8 @@ const svg = d3.select("#chart-container")
         .interpolator(d3.interpolateRdBu)
         .nice()
         .domain([-1, 1]);
-    var nodesList = [];
-    var linksList = [];
+    let nodesList = [];
+    let linksList = [];
     var UsedNodes = [];// nodes we have already Used
    // based on the code in the source(https://gist.github.com/d3noob/5155181)
    d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv").then(function (data) {
@@ -58,8 +58,8 @@ const svg = d3.select("#chart-container")
         d.value = +d.value;
         linksList.push({"src":d.Src, "dest": d.Dest, "val": +d.Val})
     });
-    console.log(nodesList);
-});
+    //console.log(nodesList);
+
 // see https://github.com/d3/d3-force/issues/32
 var graph = {
     "nodes":nodesList,
@@ -69,10 +69,13 @@ links = graph.links.map(d => ({...d}));
 nodes = graph.nodes.map(d => ({...d}));
 
 // force simulation based onhttps://d3js.org/d3-force/simulation and https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
-
+console.log(nodesList)
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links))
+      //.force("link", d3.forceLink(links))
+      // another fix based on github issues
+      .force('link', d3.forceLink(links).id(function(d) { return d.id; }))
       .force("charge", d3.forceManyBody())
       .force("center", d3.forceCenter(width / 2, height / 2));
-      //  .on("tick", ticked);
+
+    });
