@@ -37,10 +37,12 @@ const svg = d3.select("#chart-container")
         .domain([-1, 1]);
     let nodes;
     let links;
-   // based on the code in the source(https://gist.github.com/d3noob/5155181)
+
+   // based on the code in the source(https://gist.github.com/d3noob/5155181), but edited for new version and to work how I want
    d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv").then(function (data)  {
     var nodes = [];
     var links = [];
+    var UsedNodeNames = [];// a list to keep track of which nodes we already have
     //loop over the links in the csv
     data.forEach(function(d) {
         // node either uses existing node if src already a node, or creates a new node in correct format if not
