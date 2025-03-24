@@ -127,13 +127,13 @@ const nodes = graph.nodes.map(d => ({...d}));
             .attr("cx", d => d.x)
             .attr("cy", d => d.y)
             .attr("r", 5);
-        // since text not going to location, need to update location of text as well
         node.select("rect")
             .attr("x", d => d.x+10)
             .attr("y", d => d.y-30)
             .attr("width", 20)
             .attr("height", 20)
             .attr("fill", "white")
+        // since text not going to location, need to update location of text as well
         node.select("text")
             // + and - 10, to shift it so it doesn't overlap with the circles
             .attr("x", d => d.x+10)
