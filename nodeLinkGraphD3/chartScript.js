@@ -40,5 +40,8 @@ const svg = d3.select("#chart-container")
         var nodes = {};
         //loop over the links in the csv
         links.forEach(function(link) {
+            // node either uses existing node if src already a node, or creates a new node in correct format if not
+            link.Src = nodes[link.Src] || 
+                (nodes[link.Src] = {name: link.Src});
 
 
