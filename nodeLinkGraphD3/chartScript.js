@@ -124,8 +124,9 @@ const nodes = graph.nodes.map(d => ({...d}));
             .attr("r", 5);
         // since text not going to location, need to update location of text as well
         node.select("text")
-            .attr("x", d => d.x)
-            .attr("y", d => d.y)
+            // + and - 10, to shift it so it doesn't overlap with the circles
+            .attr("x", d => d.x+10)
+            .attr("y", d => d.y-10)
       }
 
    });
