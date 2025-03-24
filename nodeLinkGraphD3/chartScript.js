@@ -127,10 +127,11 @@ const nodes = graph.nodes.map(d => ({...d}));
             .attr("cx", d => d.x)
             .attr("cy", d => d.y)
             .attr("r", 5);
-       
+        // get boundinb box of text, see https://stackoverflow.com/a/65469673
+
+        var TextBoundingBox = d3.select("text").node().getBBox()
+        
         node.select("rect")
-            // get boundinb box of text, see https://stackoverflow.com/a/65469673
-            var TextBoundingBox = d3.select("text").node().getBBox()
             .attr("x", d => d.x+10)
             .attr("y", d => d.y-30)
             .attr("width", 20)
