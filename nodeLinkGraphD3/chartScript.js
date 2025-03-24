@@ -35,22 +35,39 @@ const svg = d3.select("#chart-container")
         .interpolator(d3.interpolateRdBu)
         .nice()
         .domain([-1, 1]);
-    
-   // based on the code in the source(https://gist.github.com/d3noob/5155181)
-   d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv").then(function (data) {
     var nodes = [];
     var links = [];
+    var UsedNodes = [];// nodes we have already Used
+   // based on the code in the source(https://gist.github.com/d3noob/5155181)
+   d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv").then(function (data) {
+
     //loop over the links in the csv
     data.forEach(function(d) {
         // node either uses existing node if src already a node, or creates a new node in correct format if not
-        d.Src = nodes[d.Src] || 
-            (nodes[d.Src] = {name: d.Src});
+        if (!UsedNodes.includes(d.Src)){
+            nodes.push({"name": d.Src})
+            UsedNodes.push(d.Src)
+
+        }
         // now we need to do the same witht he destination node, creating it if it doesn;t exist
-        d.Dest = nodes[d.Dest] || 
-            (nodes[d.Dest] = {name: d.Dest});
+        if (!UsedNodes.includes(d.Dest)){
+            nodes.push({"name": d.Dest})
+            UsedNodes.push(d.Dest)
+
+        }
         d.value = +d.value;
         links.push({"src":d.Src, "dest": d.Dest, "val": +d.Val})
     });
     console.log(nodes);
 });
+
+// force simulation based onhttps://d3js.org/d3-force/simulation and https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
+
+  // Create a simulation with several forces.
+  const simulation = d3.forceSimulation(nodes)
+      .force("link", d3.forceLink(links))
+      .force("charge", d3.forceManyBody())
+      .force("center", d3.forceCenter(width / 2, height / 2));
+      //  .on("tick", ticked);
     
+  
