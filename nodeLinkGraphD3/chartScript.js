@@ -29,14 +29,19 @@ const svg = d3.select("#chart-container")
         .attr("y", -margin.top/2)
 
 
-    svg.append("g")
-        .attr("transform", `translate(${width},0)`)
-        .call(legend);
+
 
     var colorScale = d3.scaleSequential()
         .interpolator(d3.interpolateRdBu)
         .nice()
         .domain([-1, 1]);
     // load from csv, based on https://d3js.org/d3-fetch
-    var nodes =  await d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodesList.csv");
+    var nodes =  d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodesList.csv",).then(function (data) {
+        // Convert string values to numbers
+        data.forEach(function (d) {
+            d['economy (mpg)'] = +d['economy (mpg)'];
+            d.name = d.name;
+    
+        });
+    });
     console.log(nodes)
