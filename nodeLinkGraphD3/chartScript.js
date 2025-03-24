@@ -80,8 +80,8 @@ const nodes = graph.nodes.map(d => ({...d}));
       .force("charge", d3.forceManyBody().strength(-200))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", ticked);
-
-
+    simulation.tick(1)
+    simulation.stop()
     console.log(links)
     // lnik code based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
     const link = svg.append("g")// new group containing links
