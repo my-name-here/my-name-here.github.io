@@ -77,7 +77,7 @@ const nodes = graph.nodes.map(d => ({...d}));
       // another fix based on github issues
       .force('link', d3.forceLink(links).id(function(d) { return d.id; }))
       // force strength adjsutment from https://d3js.org/d3-force/many-body
-      .force("charge", d3.forceManyBody().strength(-200))
+      .force("charge", d3.forceManyBody().strength(-500))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", ticked);
 
