@@ -26,7 +26,7 @@ const svg = d3.select("#chart-container")
 
     svg.append("text")
     
-        .text("scatter plot of the weights of cars vs the mpg, colored by the number of cylinders")
+        .text("force directed layout")
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
