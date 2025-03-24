@@ -56,7 +56,8 @@ const svg = d3.select("#chart-container")
 
         }
         d.value = +d.value;
-        linksList.push({"src":d.Src, "dest": d.Dest, "val": +d.Val})
+        // use source, target, value, to match with names used in data from https://observablehq.com/@d3/force-directed-graph-component
+        linksList.push({"source":d.Src, "target": d.Dest, "value": +d.Val})
     });
     //console.log(nodesList);
 
@@ -69,7 +70,7 @@ links = graph.links.map(d => ({...d}));
 nodes = graph.nodes.map(d => ({...d}));
 
 // force simulation based onhttps://d3js.org/d3-force/simulation and https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
-console.log(nodesList)
+
   // Create a simulation with several forces.
   const simulation = d3.forceSimulation(nodes)
       //.force("link", d3.forceLink(links))
