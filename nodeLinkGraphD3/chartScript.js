@@ -96,7 +96,10 @@ const nodes = graph.nodes.map(d => ({...d}));
     const node = svg.append("g")// new node group
         .selectAll()
         .data(nodes)
-        .join("circle")
+        // adding text based on https://stackoverflow.com/a/60691259
+        .join("g")
+    node.append("circle")
+    node.append("text")
 
 
     //ticked based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
@@ -113,10 +116,13 @@ const nodes = graph.nodes.map(d => ({...d}));
             .attr("stroke", d=>colorScale(d.value));
     
         node
+        //  selecting circle based on https://d3js.org/d3-selection/selecting
+            node.select("circle")
             // center the circle at the new position
             .attr("cx", d => d.x)
             .attr("cy", d => d.y)
             .attr("r", 5);
+            
 
       }
 
