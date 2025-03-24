@@ -80,6 +80,22 @@ const nodes = graph.nodes.map(d => ({...d}));
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", ticked);
 
+    console.log(links)
+    // lnik code based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
+    const link = svg.append("g")// new group containing links
+        .selectAll()
+        .data(links)
+        .join("line")// adds a new line for each link
+            // set color of links based on value
+            .attr("stroke", colorScale(d=>d.value))
+            .attr("stroke-width", 2)// set a stroke width
+
+    //  node code based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force, as well as the link code
+    const node = svg.append("g")// new node group
+        .selectAll()
+        .data(nodes)
+        .join("circle")
+            .attr("r", 5)
 console.log(nodes);
     //ticked based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
     function ticked() {
