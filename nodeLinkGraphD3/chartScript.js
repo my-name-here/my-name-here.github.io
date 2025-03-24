@@ -99,6 +99,11 @@ const nodes = graph.nodes.map(d => ({...d}));
         // adding text based on https://stackoverflow.com/a/60691259
         .join("g")
     node.append("circle")
+    // a rect that will go behind the text
+    // https://brettromero.com/d3-js-adding-a-colored-background-to-a-text-element/
+    // since no nice way of adding backfround to text, just fake it with a rectangle
+    node.append("rect")
+
     node.append("text").text(d=>d.id)
 
 
@@ -123,10 +128,17 @@ const nodes = graph.nodes.map(d => ({...d}));
             .attr("cy", d => d.y)
             .attr("r", 5);
         // since text not going to location, need to update location of text as well
+        node.select("rect")
+            .attr("x", d => d.x+10)
+            .attr("y", d => d.y-30)
+            .attr("width", 20)
+            .attr("height", 20)
+            .attr("fill", "white")
         node.select("text")
             // + and - 10, to shift it so it doesn't overlap with the circles
             .attr("x", d => d.x+10)
             .attr("y", d => d.y-10)
+
       }
 
    });
