@@ -33,3 +33,6 @@ const svg = d3.select("#chart-container")
     svg.append("g")
         .attr("transform", `translate(${width},0)`)
         .call(legend);
+
+    // based on the code in the source(https://gist.github.com/d3noob/5155181)
+    d3.csv("nodes.csv", function(error, links) {
