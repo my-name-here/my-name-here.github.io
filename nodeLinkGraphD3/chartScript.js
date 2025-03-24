@@ -36,7 +36,7 @@ const svg = d3.select("#chart-container")
 
 
     // based on the code in the source(https://gist.github.com/d3noob/5155181)
-    d3.csv("nodes.csv", function(error, links) {
+    d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv", function(error, links) {
         var nodes = {};
         //loop over the links in the csv
         links.forEach(function(link) {
