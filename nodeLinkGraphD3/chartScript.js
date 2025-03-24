@@ -48,4 +48,9 @@ const svg = d3.select("#chart-container")
                 (nodes[link.Dest] = {name: link.Dest});
             link.value = +link.value;
         });
+        // will color the points based on whether value is positive or negative, using linear scale to get it all positive, but shouldn't matter
+
+        valueScale = d3.scaleLinear()
+            .domain([-1,1])
+            .range([0,100])
     });
