@@ -45,13 +45,13 @@ const svg = d3.select("#chart-container")
     data.forEach(function(d) {
         // node either uses existing node if src already a node, or creates a new node in correct format if not
         if (!UsedNodes.includes(d.Src)){
-            nodes.push({"name": d.Src})
+            nodes.push({"id": d.Src})
             UsedNodes.push(d.Src)
 
         }
         // now we need to do the same witht he destination node, creating it if it doesn;t exist
         if (!UsedNodes.includes(d.Dest)){
-            nodes.push({"name": d.Dest})
+            nodes.push({"id": d.Dest})
             UsedNodes.push(d.Dest)
 
         }
@@ -60,6 +60,9 @@ const svg = d3.select("#chart-container")
     });
     console.log(nodes);
 });
+var graph = {}
+links = links.map(d => ({...d}));
+nodes = nodes.map(d => ({...d}));
 
 // force simulation based onhttps://d3js.org/d3-force/simulation and https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
 
