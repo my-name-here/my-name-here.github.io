@@ -35,10 +35,11 @@ const svg = d3.select("#chart-container")
         .interpolator(d3.interpolateRdBu)
         .nice()
         .domain([-1, 1]);
-    let nodes;
+    
    // based on the code in the source(https://gist.github.com/d3noob/5155181)
-   d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv", function(error, links) {
+   d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv", function(links) {
     var nodes = {};
+
     //loop over the links in the csv
     links.forEach(function(link) {
         // node either uses existing node if src already a node, or creates a new node in correct format if not
@@ -49,5 +50,6 @@ const svg = d3.select("#chart-container")
             (nodes[link.Dest] = {name: link.Dest});
         link.value = +link.value;
     });
+    console.log(links);
 });
-    console.log(nodes);
+    
