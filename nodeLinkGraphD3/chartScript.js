@@ -35,23 +35,21 @@ const svg = d3.select("#chart-container")
         .interpolator(d3.interpolateRdBu)
         .nice()
         .domain([-1, 1]);
-    let nodes;
-    let links;
-
-   // based on the code in the source(https://gist.github.com/d3noob/5155181), but edited for new version and to work how I want
-   d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv").then(function (data)  {
-    var nodes = [];
-    var links = [];
-    var UsedNodeNames = [];// a list to keep track of which nodes we already have
+    
+   // based on the code in the source(https://gist.github.com/d3noob/5155181)
+   d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv").then(function (data) {
+    var nodes = {};
+    var links = {};
     //loop over the links in the csv
     data.forEach(function(d) {
         // node either uses existing node if src already a node, or creates a new node in correct format if not
-        nodes.push( {name: d.Src});
+        d.Src = nodes[d.Src] || 
+            (nodes[d.Src] = {name: d.Src});
         // now we need to do the same witht he destination node, creating it if it doesn;t exist
-        nodes.push( {name: d.Dest});
-
+        d.Dest = nodes[d.Dest] || 
+            (nodes[d.Dest] = {name: d.Dest});
         d.value = +d.value;
-        links.push({"src":d.Src, "dest": d.Dest, "val": +d.Val});
+        links.push({"src":d.Src, "dest": d.Dest, "val": +d.Val})
     });
     console.log(nodes);
 });
