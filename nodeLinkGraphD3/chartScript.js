@@ -52,5 +52,6 @@ const svg = d3.select("#chart-container")
 
         valueScale = d3.scaleLinear()
             .domain([-1,1])
-            .range([0,100])
+            .range([0,100]);
+        // now we style the nodes based on the value, if >50, then blue, <50 red, 50 is white
     });
