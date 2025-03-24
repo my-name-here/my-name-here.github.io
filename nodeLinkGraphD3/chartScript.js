@@ -1,6 +1,5 @@
 
 
-// node link graph based on https://gist.github.com/d3noob/5155181
 
 
 // basic framework from class example, edited to work for my needs
@@ -34,23 +33,3 @@ const svg = d3.select("#chart-container")
         .attr("transform", `translate(${width},0)`)
         .call(legend);
 
-
-    // based on the code in the source(https://gist.github.com/d3noob/5155181)
-    d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv", function(error, links) {
-        var nodes = {};
-        //loop over the links in the csv
-        links.forEach(function(link) {
-            // node either uses existing node if src already a node, or creates a new node in correct format if not
-            link.Src = nodes[link.Src] || 
-                (nodes[link.Src] = {name: link.Src});
-            // now we need to do the same witht he destination node, creating it if it doesn;t exist
-            link.Dest = nodes[link.Dest] || 
-                (nodes[link.Dest] = {name: link.Dest});
-            link.value = +link.value;
-        });
-        // use diverging color scale instead of dealing with manual coloring
-        var colorScale = d3.scaleSequential()
-            .interpolator(d3.interpolateRdBu)
-            .nice()
-            .domain([-1, 1]);// since values from -1 to 1
-    });
