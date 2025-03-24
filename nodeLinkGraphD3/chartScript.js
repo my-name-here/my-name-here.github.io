@@ -7,10 +7,10 @@
 // Set up the SVG container
 const svgWidth = 1000;
 const svgHeight = 1000;
-const margin = { top: 50, right: 100, bottom: 100, left: 250 };
+const margin = { top: 50, right: 100, bottom: 100, left: 100 };
 const width = svgWidth - margin.left - margin.right;
 const height = svgHeight - margin.top - margin.bottom;
-
+console.log(width)
 const minSize = 1
 const maxSize = 6
 const svg = d3.select("#chart-container")
@@ -67,7 +67,7 @@ var graph = {
     "links":linksList,
 }
 links = graph.links.map(d => ({...d}));
-nodes = graph.nodes.map(d => ({...d}));
+const nodes = graph.nodes.map(d => ({...d}));
 
 // force simulation based onhttps://d3js.org/d3-force/simulation and https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
 
@@ -77,6 +77,23 @@ nodes = graph.nodes.map(d => ({...d}));
       // another fix based on github issues
       .force('link', d3.forceLink(links).id(function(d) { return d.id; }))
       .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width / 2, height / 2));
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .on("tick", ticked);
 
-    });
+console.log(nodes);
+    //ticked based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
+    function ticked() {
+        link
+            // start and end set to current positions
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+    
+        node
+            // center the circle at the new position
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y);
+      }
+
+   });
