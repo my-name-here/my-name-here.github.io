@@ -35,13 +35,17 @@ const svg = d3.select("#chart-container")
         .interpolator(d3.interpolateRdBu)
         .nice()
         .domain([-1, 1]);
-    // load from csv, based on https://d3js.org/d3-fetch
-    var nodes = d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodesList.csv",).then(function (data) {
-        // Convert string values to numbers
-        data.forEach(function (d) {
-            d['nodes'] = d['s'];
-
-    
-        });
+   // based on the code in the source(https://gist.github.com/d3noob/5155181)
+   d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodes.csv", function(error, links) {
+    var nodes = {};
+    //loop over the links in the csv
+    links.forEach(function(link) {
+        // node either uses existing node if src already a node, or creates a new node in correct format if not
+        link.Src = nodes[link.Src] || 
+            (nodes[link.Src] = {name: link.Src});
+        // now we need to do the same witht he destination node, creating it if it doesn;t exist
+        link.Dest = nodes[link.Dest] || 
+            (nodes[link.Dest] = {name: link.Dest});
+        link.value = +link.value;
     });
     console.log(nodes)
