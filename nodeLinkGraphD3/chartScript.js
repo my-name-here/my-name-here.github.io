@@ -37,3 +37,6 @@ const svg = d3.select("#chart-container")
         .interpolator(d3.interpolateRdBu)
         .nice()
         .domain([-1, 1]);
+    // load from csv, based on https://d3js.org/d3-fetch
+    var nodes =  await d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/nodeLinkGraphD3/nodesList.csv");
+    console.log(nodes)
