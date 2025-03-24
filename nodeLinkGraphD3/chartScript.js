@@ -122,8 +122,10 @@ const nodes = graph.nodes.map(d => ({...d}));
             .attr("cx", d => d.x)
             .attr("cy", d => d.y)
             .attr("r", 5);
-            
-
+        // since text not going to location, need to update location of text as well
+        node.select("text")
+            .attr("x", d => d.x)
+            .attr("y", d => d.y)
       }
 
    });
