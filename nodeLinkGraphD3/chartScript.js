@@ -130,12 +130,13 @@ const nodes = graph.nodes.map(d => ({...d}));
         // get boundinb box of text, see https://stackoverflow.com/a/65469673
 
         var TextBoundingBox = d3.select("text").node().getBBox()
-        
+        console.log(node)
         node.select("rect")
-            .attr("x", d => d.x+10)
-            .attr("y", d => d.y-30)
-            .attr("width", 20)
+            .attr("x",d=>d.x+10)
+            .attr("y", d=>d.y-25)
+            .attr("width", 15)
             .attr("height", 20)
+            .attr("opacity", 0.9)
             .attr("fill", "white")
         // since text not going to location, need to update location of text as well
         node.select("text")
