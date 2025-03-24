@@ -86,16 +86,13 @@ const nodes = graph.nodes.map(d => ({...d}));
         .selectAll()
         .data(links)
         .join("line")// adds a new line for each link
-            // set color of links based on value
-            .attr("stroke", colorScale(d=>d.value))
-            .attr("stroke-width", 2)// set a stroke width
 
     //  node code based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force, as well as the link code
     const node = svg.append("g")// new node group
         .selectAll()
         .data(nodes)
         .join("circle")
-            .attr("r", 5)
+
 console.log(nodes);
     //ticked based on https://observablehq.com/@d3/force-directed-graph/2?collection=@d3/d3-force
     function ticked() {
@@ -104,12 +101,18 @@ console.log(nodes);
             .attr("x1", d => d.source.x)
             .attr("y1", d => d.source.y)
             .attr("x2", d => d.target.x)
-            .attr("y2", d => d.target.y);
+            .attr("y2", d => d.target.y)
+            // set color of links based on value
+            .attr("stroke-width", 2)// set a stroke width
+
+            .attr("stroke", d=>colorScale(d.value));
     
         node
             // center the circle at the new position
             .attr("cx", d => d.x)
-            .attr("cy", d => d.y);
+            .attr("cy", d => d.y)
+            .attr("r", 5);
+
       }
 
    });
