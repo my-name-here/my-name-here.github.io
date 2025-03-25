@@ -138,6 +138,7 @@ const nodes = graph.nodes.map(d => ({...d}));
             // 2*, since it only a single character fits in width of selected node
             .attr("width", 2*TextBoundingBox.width)
             .attr("height", TextBoundingBox.height)
+            .attr("opacity", 0.9)
             .attr("fill", "white")
         // since text not going to location, need to update location of text as well
         node.select("text")
