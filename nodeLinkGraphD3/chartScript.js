@@ -128,15 +128,16 @@ const nodes = graph.nodes.map(d => ({...d}));
             .attr("cy", d => d.y)
             .attr("r", 5);
         // get boundinb box of text, see https://stackoverflow.com/a/65469673
+        // doesn't work as intended, since node is the first one matching selection(https://d3js.org/d3-selection/control-flow#selection_node)
+        var TextBoundingBox = node.select("text").node().getBBox()
 
-        var TextBoundingBox = d3.select("text").node().getBBox()
-        console.log(node)
         node.select("rect")
             .attr("x",d=>d.x+10)
-            .attr("y", d=>d.y-25)
-            .attr("width", 15)
-            .attr("height", 20)
-            .attr("opacity", 0.9)
+            // moves it up a bit, so rect starts above text
+            .attr("y", d=>d.y-5-TextBoundingBox.height)
+            // 2*, since it only a single character fits in width of selected node
+            .attr("width", 2*TextBoundingBox.width)
+            .attr("height", TextBoundingBox.height)
             .attr("fill", "white")
         // since text not going to location, need to update location of text as well
         node.select("text")
