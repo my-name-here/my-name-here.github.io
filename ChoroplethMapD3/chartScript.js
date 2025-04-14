@@ -25,20 +25,20 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     // Convert string values to numbers
     data.forEach(function (d) {
         d["FIPStxt"] = d["FIPStxt"];
-        d["CENSUS_2020_POP"] = +d["CENSUS_2020_POP"]
+        d["POP_ESTIMATE_2023"] = +d["POP_ESTIMATE_2023"]
 
 
     });
-    data.sort((a,b) => a["CENSUS_2020_POP"]>b["CENSUS_2020_POP"]);
+    data.sort((a,b) => a["POP_ESTIMATE_2023"]>b["POP_ESTIMATE_2023"]);
     console.log(data);
-    console.log(d3.min(data, d=>d["CENSUS_2020_POP"]));
+    console.log(d3.min(data, d=>d["POP_ESTIMATE_2023"]));
     // Define colorscale
     // quantize color scale based on example from https://www.d3indepth.com/scales/
     var colorScale = d3.scaleQuantize()
         
         .nice()
 
-        .domain([d3.min(data, (d) => d["CENSUS_2020_POP"]),d3.max(data, (d) => d["CENSUS_2020_POP"])])
+        .domain([d3.min(data, (d) => d["POP_ESTIMATE_2023"]),d3.max(data, (d) => d["POP_ESTIMATE_2023"])])
         //colors chosen by colorbrewer(https://colorbrewer2.org/#type=sequential&scheme=Blues&n=5)
         .range(["#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"]);
 
@@ -52,7 +52,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("y", -margin.top/2)
         
     var legend = d3.legendColor()
-		.title("Color Legend: census population 2020")
+		.title("Color Legend: population estimate 2023")
 		.titleWidth(100)
         .cells(10) // change the number of cells during demo 
         .scale(colorScale);
