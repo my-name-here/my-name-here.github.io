@@ -32,10 +32,11 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
     // Define X and Y scales
    
-    const color = d3.scaleLinear()
-        .domain([d3.min(data, d => d["power (hp)"]), d3.max(data, d => d["power (hp)"])])
+    var colorScale = d3.scaleSequential()
+        .interpolator(d3.interpolateBlues)
         .nice()
-        .range([ 50, 255]);
+        .domain([d3.min(data, (d) => d['economy (mpg)']),d3.max(data, (d) => d['economy (mpg)'])]);
+
 
 
 
@@ -45,4 +46,6 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
+        
+
 });
