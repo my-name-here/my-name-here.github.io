@@ -44,15 +44,30 @@ Promise.all([
     console.log(files[0]);
     console.log(d3.min(files[0], d=>d["POP_ESTIMATE_2023"]));
     console.log(d3.max(files[0], d=>d["POP_ESTIMATE_2023"]));
-    // Define colorscale
-    // quantize color scale based on example from https://www.d3indepth.com/scales/
-    var colorScale = d3.scaleQuantize()
-        
-        .nice()
 
-        .domain([d3.min(files[0], (d) => d["POP_ESTIMATE_2023"]),d3.max(files[0], (d) => d["POP_ESTIMATE_2023"])])
+    // math to figure out how many per area
+
+    numSections = 7
+    minVal = d3.min(files[0], (d) => d["POP_ESTIMATE_2023"])
+    maxVal = d3.max(files[0], (d) => d["POP_ESTIMATE_2023"])
+    LogMin = Math.log10(minVal)
+    LogMax = Math.log10(maxVal)
+    numMiddleSections = numSections - 3
+    logChange = LogMax - LogMin
+    logChangePerSection =  logChange/numMiddleSections
+    mid1 = Math.pow(10, LogMin + 1*logChangePerSection)
+    mid2 = Math.pow(10, LogMin + 2*logChangePerSection)
+    mid3 = Math.pow(10, LogMin + 3*logChangePerSection)
+    mid4 = Math.pow(10, LogMin + 4*logChangePerSection)
+    
+    
+    // Define colorscale
+    // threshold color scale based on example from https://www.d3indepth.com/scales/
+    var colorScale = d3.scaleThreshold()
+        .domain([minVal,mid1,mid2,mid3,mid4,maxVal])
         //colors are blues, based on https://d3js.org/d3-scale/quantize
-        .range(d3.schemeBlues[5]);
+        .range(d3.schemeBlues[7])
+
 
     // creating path based on https://d3js.org/d3-geo/path and    
     // the map code from https://observablehq.com/@mackenziehutchison/choropleth?collection=@observablehq/county-maps 
