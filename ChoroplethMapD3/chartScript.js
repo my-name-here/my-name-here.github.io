@@ -58,7 +58,7 @@ Promise.all([
         .selectAll("path")
         .data(topojson.feature(files[1], files[1].objects.counties).features)
         .join("path")
-            .attr("fill", d => color(data.get(d.id)))
+            //.attr("fill", d => color(data.get(d.id)))
             .attr("d", path)
     
     // title, legend, from earlier assignments
