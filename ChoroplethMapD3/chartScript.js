@@ -19,6 +19,7 @@ const svg = d3.select("#chart-container")
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
+var FIPS2Pop = {};
 // Read data from CSV
 d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/populationEstimate.csv").then(function (data) {
 
@@ -26,9 +27,10 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     data.forEach(function (d) {
         d["FIPStxt"] = d["FIPStxt"];
         d["POP_ESTIMATE_2023"] = +d["POP_ESTIMATE_2023"]
-
+        FIPS2Pop[d["FIPStxt"]] = d["POP_ESTIMATE_2023"];
 
     });
+
     data.sort((a,b) => a["POP_ESTIMATE_2023"]>b["POP_ESTIMATE_2023"]);
     console.log(data);
     console.log(d3.min(data, d=>d["POP_ESTIMATE_2023"]));
