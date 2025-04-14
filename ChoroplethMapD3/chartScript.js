@@ -59,8 +59,9 @@ Promise.all([
     svg.selectAll()
         .data(topojson.feature(files[1], files[1].objects.counties).features)
         .join("path")
+            .attr("fill", d => colorScale(data.get(d.id)))
+
             .attr("d", d3.geoPath());
-            //.attr("fill", d => color(data.get(d.id)))
 
 
     // title, legend, from earlier assignments
