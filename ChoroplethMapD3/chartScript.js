@@ -53,6 +53,11 @@ Promise.all([
         //colors chosen by colorbrewer(https://colorbrewer2.org/#type=sequential&scheme=Blues&n=5)
         .range(["#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"]);
 
+    // creating path based on https://d3js.org/d3-geo/path
+    svg.selectAll()
+        .data(topojson.feature(files[1], files[1].objects.counties).features)
+        .join("path")
+            .attr("d", d3.geoPath());
     // following little section based on the map code from https://observablehq.com/@mackenziehutchison/choropleth?collection=@observablehq/county-maps 
     svg.append("g")
         .selectAll("path")
