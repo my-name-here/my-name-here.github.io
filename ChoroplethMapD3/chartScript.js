@@ -52,7 +52,7 @@ Promise.all([
     maxVal = d3.max(files[0], (d) => d["POP_ESTIMATE_2023"])
     LogMin = Math.log10(minVal)
     LogMax = Math.log10(maxVal)
-    numMiddleSections = numSections - 3
+    numMiddleSections = numSections - 2
     logChange = LogMax - LogMin
     logChangePerSection =  logChange/numMiddleSections
     mid1 = Math.pow(10, LogMin + 1*logChangePerSection)
