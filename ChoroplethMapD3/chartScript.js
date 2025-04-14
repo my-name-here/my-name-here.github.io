@@ -59,7 +59,7 @@ Promise.all([
     svg.selectAll()
         .data(topojson.feature(files[1], files[1].objects.counties).features)
         .join("path")
-            .attr("fill", d => colorScale(FIPS2Pop.get(d.id)))
+            .attr("fill", d => colorScale(FIPS2Pop[d.id]))
 
             .attr("d", d3.geoPath());
 
