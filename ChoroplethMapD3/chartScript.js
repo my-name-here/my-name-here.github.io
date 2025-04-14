@@ -3,7 +3,7 @@
 // Set up the SVG container
 const svgWidth = 1000;
 const svgHeight = 1000;
-const margin = { top: 50, right: 20, bottom: 100, left: 250 };
+const margin = { top: 50, right: 100, bottom: 100, left: 250 };
 const width = svgWidth - margin.left - margin.right;
 const height = svgHeight - margin.top - margin.bottom;
 
@@ -24,7 +24,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     data.forEach(function (d) {
         d["FIPStxt"] = d["FIPStxt"];
         d.fipsSort = +d.FIPStxt;
-        d["CENSUS_2020_POP"] = +d["CENSUS_2020_POP"]
+        d["POP_ESTIMATE_2023"] = +d["POP_ESTIMATE_2023"]
 
     });
     data.sort((a,b) => a.fipsSort>b.fipsSort);
@@ -35,7 +35,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     var colorScale = d3.scaleSequential()
         .interpolator(d3.interpolateBlues)
         .nice()
-        .domain([d3.min(data, (d) => d['economy (mpg)']),d3.max(data, (d) => d['economy (mpg)'])]);
+        .domain([d3.min(data, (d) => d["POP_ESTIMATE_2023"]),d3.max(data, (d) => d["POP_ESTIMATE_2023"])]);
 
 
 
@@ -48,7 +48,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
         .attr("y", -margin.top/2)
         
     var legend = d3.legendColor()
-		.title("Color Legend: economy (mpg)")
+		.title("Color Legend: population estimate 2023")
 		.titleWidth(100)
         .cells(10) // change the number of cells during demo 
         .scale(colorScale);
