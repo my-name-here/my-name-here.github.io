@@ -41,7 +41,7 @@ Promise.all([
 
 
     files[0].sort((a,b) => a["POP_ESTIMATE_2023"]>b["POP_ESTIMATE_2023"]);
-    console.log(data);
+    console.log(files[0]);
     console.log(d3.min(files[0], d=>d["POP_ESTIMATE_2023"]));
     // Define colorscale
     // quantize color scale based on example from https://www.d3indepth.com/scales/
