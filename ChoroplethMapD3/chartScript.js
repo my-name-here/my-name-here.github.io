@@ -31,7 +31,7 @@ Promise.all([
     d3.json("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/counties-albers-10m.json"),
 ]).then(function(files){
 
-    file1.forEach(function (d) {
+    files[0].forEach(function (d) {
         d["FIPStxt"] = d["FIPStxt"];
         d["POP_ESTIMATE_2023"] = +d["POP_ESTIMATE_2023"]
         // coorespondence idea loosely based on https://observablehq.com/@mackenziehutchison/choropleth?collection=@observablehq/county-maps
@@ -40,16 +40,16 @@ Promise.all([
     });
 
 
-    file1.sort((a,b) => a["POP_ESTIMATE_2023"]>b["POP_ESTIMATE_2023"]);
+    files[0].sort((a,b) => a["POP_ESTIMATE_2023"]>b["POP_ESTIMATE_2023"]);
     console.log(data);
-    console.log(d3.min(file1, d=>d["POP_ESTIMATE_2023"]));
+    console.log(d3.min(files[0], d=>d["POP_ESTIMATE_2023"]));
     // Define colorscale
     // quantize color scale based on example from https://www.d3indepth.com/scales/
     var colorScale = d3.scaleQuantize()
         
         .nice()
 
-        .domain([d3.min(file1, (d) => d["POP_ESTIMATE_2023"]),d3.max(file1, (d) => d["POP_ESTIMATE_2023"])])
+        .domain([d3.min(files[0], (d) => d["POP_ESTIMATE_2023"]),d3.max(files[0], (d) => d["POP_ESTIMATE_2023"])])
         //colors chosen by colorbrewer(https://colorbrewer2.org/#type=sequential&scheme=Blues&n=5)
         .range(["#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"]);
 
