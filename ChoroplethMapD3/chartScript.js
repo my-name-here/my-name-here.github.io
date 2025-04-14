@@ -39,10 +39,11 @@ Promise.all([
 
     });
 
-
+    console.log(FIPS2Pop)
     files[0].sort((a,b) => a["POP_ESTIMATE_2023"]>b["POP_ESTIMATE_2023"]);
     console.log(files[0]);
     console.log(d3.min(files[0], d=>d["POP_ESTIMATE_2023"]));
+    console.log(d3.max(files[0], d=>d["POP_ESTIMATE_2023"]));
     // Define colorscale
     // quantize color scale based on example from https://www.d3indepth.com/scales/
     var colorScale = d3.scaleQuantize()
@@ -50,17 +51,16 @@ Promise.all([
         .nice()
 
         .domain([d3.min(files[0], (d) => d["POP_ESTIMATE_2023"]),d3.max(files[0], (d) => d["POP_ESTIMATE_2023"])])
-        //colors chosen by colorbrewer(https://colorbrewer2.org/#type=sequential&scheme=Blues&n=5)
-        .range(["#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"]);
+        //colors are blues, based on https://d3js.org/d3-scale/quantize
+        .range(d3.schemeBlues[5]);
 
     // creating path based on https://d3js.org/d3-geo/path and    
     // the map code from https://observablehq.com/@mackenziehutchison/choropleth?collection=@observablehq/county-maps 
-
+    console.log(topojson.feature(files[1], files[1].objects.counties).features)
     svg.selectAll()
         .data(topojson.feature(files[1], files[1].objects.counties).features)
         .join("path")
             .attr("fill", d => colorScale(FIPS2Pop[d.id]))
-
             .attr("d", d3.geoPath());
 
 
