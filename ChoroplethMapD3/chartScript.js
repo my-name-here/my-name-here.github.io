@@ -19,6 +19,13 @@ const svg = d3.select("#chart-container")
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
+
+// need to load the topojson file as well, do that seperately
+// based on https://observablehq.com/@mackenziehutchison/choropleth?collection=@observablehq/county-maps
+// something like FileAttachment("counties-albers-10m.json").json()
+USMap = FileAttachment("counties-albers-10m.json").json();
+
+
 var FIPS2Pop = {};
 // Read data from CSV
 d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/populationEstimate.csv").then(function (data) {
