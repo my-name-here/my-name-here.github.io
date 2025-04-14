@@ -29,7 +29,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
 
     });
-    data.sort((a,b) => d["POP_ESTIMATE_2023"]>d["POP_ESTIMATE_2023"]);
+    data.sort((a,b) => a["POP_ESTIMATE_2023"]>b["POP_ESTIMATE_2023"]);
     console.log(data);
     console.log(d3.min(data, d=>d["POP_ESTIMATE_2023"]));
     // Define colorscale
