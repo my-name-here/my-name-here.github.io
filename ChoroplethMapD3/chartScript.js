@@ -39,20 +39,9 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
 
 
 
-
-    svg.append("text")
-        .text("weight")
-        .attr("x", -100)
-        .attr("y", height/2)
-        
-    svg.append("text")
-        .text("mpg")
-        .attr("x", width/2)
-        .attr("y", height+margin.bottom/2)
-
     svg.append("text")
     
-        .text("bubble plot of the weights of cars vs the mpg, with size representing the number of cylinders and  darker colors representing higher power")
+        .text("map of the United States, colored by county population")
         .attr("class", "title")
         .attr("x", 0)
         .attr("y", -margin.top/2)
