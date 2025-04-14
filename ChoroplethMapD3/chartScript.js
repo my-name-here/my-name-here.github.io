@@ -18,74 +18,25 @@ const svg = d3.select("#chart-container")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
 // Read data from CSV
-d3.csv("cars.csv").then(function (data) {
+d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/refs/heads/main/populationEstimate.csv").then(function (data) {
 
     // Convert string values to numbers
     data.forEach(function (d) {
-        d["economy (mpg)"] = +d["economy (mpg)"];
-        d["weight (lb)"] = +d["weight (lb)"]
-        d["cylinders"] = +d["cylinders"]
-        d["power (hp)"] = +d["power (hp)"]
-        d.name = d.name;
+        d["FIPStxt"] = d["FIPStxt"];
+        d.fipsSort = +d.FIPStxt;
+        d["CENSUS_2020_POP"] = +d["CENSUS_2020_POP"]
+
     });
-    data.sort((a,b) => a.name>b.name);
+    data.sort((a,b) => a.fipsSort>b.fipsSort);
     console.log(data);
 
     // Define X and Y scales
-    const y = d3.scaleLinear()
-        .domain([d3.min(data, d => d["weight (lb)"])-200, d3.max(data, d => d["weight (lb)"])])
-        .nice()
-        .range([ 0, -height])
-        //.padding(0.1);
-    console.log(d3.max(data, d => d["economy (mpg)"]))
-    const x = d3.scaleLinear()
-        .domain([d3.min(data, d => d["economy (mpg)"])-2, d3.max(data, d => d["economy (mpg)"])])
-        .nice()
-        .range([ 0, width]);
-    
-    const size = d3.scaleLinear()
-        .domain([d3.min(data, d => d["cylinders"]), d3.max(data, d => d["cylinders"])])
-        .nice()
-        .range([ minSize, maxSize]);
-
+   
     const color = d3.scaleLinear()
         .domain([d3.min(data, d => d["power (hp)"]), d3.max(data, d => d["power (hp)"])])
         .nice()
         .range([ 50, 255]);
-    // Add X and Y axes
-    svg.append("g")
-        .attr("class", "axis axis-x")
-        .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisBottom(x).ticks(20));
 
-    svg.append("g")
-        .attr("class", "axis axis-y")
-        .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisLeft(y).ticks(20));
-
-    // Add bars
-    // adding multiple elements on same level with groups based on https://stackoverflow.com/questions/65434376/append-two-elements-in-svg-at-the-same-level
-    bars =  svg.selectAll(".bar")
-        .data(data)
-        .enter()
-        .append("g")
-        
-
-       
-    bars.append("circle")
-        .attr("cx", d => x(d["economy (mpg)"]))
-        .attr("cy", d => y(d["weight (lb)"]))
-        .attr("r", d => size(d["cylinders"]))
-        .attr("fill", d =>  `rgb(${color(d["power (hp)"])}, ${color(d["power (hp)"])}, ${color(d["power (hp)"])})`)
-        .attr("transform", `translate(0, ${height})`)// translate points down to match with axis
-
-    
-    // bars.append("text")
-    //     .attr("class", "barLabel")
-    //     .text(d => `mpg: ${(d["economy (mpg)"])}`)
-    //     .attr("y", d => y(d.name)+15)
-    //     .attr("x", d => 25)
-        
 
 
 
