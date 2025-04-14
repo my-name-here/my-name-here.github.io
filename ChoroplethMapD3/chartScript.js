@@ -27,6 +27,7 @@ d3.csv("https://raw.githubusercontent.com/my-name-here/my-name-here.github.io/re
     data.forEach(function (d) {
         d["FIPStxt"] = d["FIPStxt"];
         d["POP_ESTIMATE_2023"] = +d["POP_ESTIMATE_2023"]
+        // coorespondence idea loosely based on https://observablehq.com/@mackenziehutchison/choropleth?collection=@observablehq/county-maps
         FIPS2Pop[d["FIPStxt"]] = d["POP_ESTIMATE_2023"];
 
     });
