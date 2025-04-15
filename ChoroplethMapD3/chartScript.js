@@ -35,7 +35,7 @@ Promise.all([
         d["FIPStxt"] = d["FIPStxt"];
         d["POP_ESTIMATE_2023"] = +d["POP_ESTIMATE_2023"]
         // coorespondence idea loosely based on https://observablehq.com/@mackenziehutchison/choropleth?collection=@observablehq/county-maps
-        FIPS2Pop[d["FIPStxt"]] = d["POP_ESTIMATE_2023"];
+        FIPS2Pop[d["FIPStxt"]] = +d["POP_ESTIMATE_2023"];
 
     });
 
@@ -75,8 +75,10 @@ Promise.all([
     svg.selectAll()
         .data(topojson.feature(files[1], files[1].objects.counties).features)
         .join("path")
-            .attr("fill", d => colorScale(FIPS2Pop[d.id]))
-            .attr("d", d3.geoPath());
+            // use ternary operator to check if id in the object, and if not, assume population is the min population
+            .attr("fill", d => colorScale(d.id in FIPS2Pop ? FIPS2Pop[d.id] : d3.min(files[0], (d) => d["POP_ESTIMATE_2023"])))
+            .attr("d", d3.geoPath())
+
 
 
     // title, legend, from earlier assignments
