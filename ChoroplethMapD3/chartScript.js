@@ -76,6 +76,9 @@ Promise.all([
         .data(topojson.feature(files[1], files[1].objects.counties).features)
         .join("path")
             // use ternary operator to check if id in the object, and if not, assume population is the min population
+            // this fixes missing values having no color, though they are probably colored wrong by assuming min value, we don't have much better of an option
+            // we might be able to do some estimating of the value in the dataset itself, but removing the data rather than filling it in with guesses is probably better
+
             .attr("fill", d => colorScale(d.id in FIPS2Pop ? FIPS2Pop[d.id] : d3.min(files[0], (d) => d["POP_ESTIMATE_2023"])))
             .attr("d", d3.geoPath())
 
